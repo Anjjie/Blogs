@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/Backstage_TopNavigation.css" />
+		<script src="JQ_File/jquery-3.2.1.js" type="text/javascript"></script>
+		<script src="js/Backstage_TopNavigation.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function(){
+				topPull_Down();
+			});
+		</script>
+	</head>
+	<body>
+		<div class="TopNavgationBack">
+			<div class="divLogo">
+				<label id="labelLogo">XLong博客</label> <label id="topLabel"></span>· 管理中心</label>
+			</div>
+			<div class="DivNavgationContent">
+				<ul>
+					<li id="liLoginName">账号名称
+						<div class="liLoginName_divPull-Down" id="Pull_Down1">
+							<div class="divPull-down_list">个人中心</div>
+							<div class="divPull-down_list">退出登录</div>
+						</div>
+					</li>
+					<li id="liSet">设置</li>
+				</ul>
+			</div>
+		</div>
+		<div class="divContentAll">
+			<div class="leftNavgation_Background">
+				<div id="divMore"></div>
+			</div>
+			<div class="rightContent"></div>
+		</div>
+	</body>
+</html>

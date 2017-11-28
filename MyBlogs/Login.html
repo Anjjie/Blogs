@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>后台登录</title>
+		<link href="css/Login.css" type="text/css" rel='stylesheet' />
+		<script type="text/javascript" src="JQ_File/jquery-3.2.1.js"></script>
+		<script src="js/Login.js" type="text/javascript"></script>
+		<script type="text/javascript">
+            $(function () {
+			    btnLogin_Click();
+			    GetVerifyCode();
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="DivLoginBakc"></div>
+		<div class="DivLoginContent">
+			<div class="DivLoginTitle">后台登录</div>
+            <form id="loginForm" action="Backstage_Index.html">
+                <div class="DivLoginInfo">
+                    <ul>
+                        <li>
+                            <input type="text" id='txtLoginName' class="text" placeholder="管理员账号" value="Anjjie_Blogs888" />
+                        </li>
+                        <li>
+                            <input type="password" id="txtLoginPwd" class="text" placeholder="管理员密码" value="Anjjie_.**123" />
+                        </li>
+                        <li>
+                            <input type="text" id="txtVerifyCode" class="text" placeholder="手机验证码" />
+                        </li>
+                        <li>
+                            <input type="button" id="btnGetPhoneVerify" value="获取手机验证" class="button" />
+                        </li>
+                        <li>
+                            <input type="button" id="btnLogin" value="登录" class="button" />
+                        </li>
+                        <li id="liHint">
+
+                        </li>
+                    </ul>
+                </div>
+            </form>
+		</div>
+	</body>
+
+</html>

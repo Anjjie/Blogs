@@ -1,0 +1,68 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-image:url("../images/starryImage.jpg");
+	background-size: 100%;
+}
+ul,li{
+	list-style-type: none;
+	margin-top: 10px;
+	text-align: left;
+}
+input{
+	width: 320px;
+	height: 40px;
+	outline-style: none;
+	border: 1px solid gainsboro;
+}
+input:focus{
+	box-shadow: 0 0 10 darkred;
+}
+.text{
+	border-radius: 4px;
+	padding-left: 10px;
+}
+.button{
+	width:330px;
+}
+.DivLoginBakc{
+	width:400px;
+	height:500px;
+	background-color:#ffffff;
+	opacity: 0.3;
+	position:absolute;
+	left:50%;
+	top:50% ;
+	margin-left:-200px;
+	margin-top:-250px;
+	border-radius:20px;
+}
+.DivLoginContent{
+	width:400px;
+	height:500px;
+	background-color:transparent;
+	position:absolute;
+	left:50%;
+	top:50% ;
+	margin-left:-200px;
+	margin-top:-250px;
+	border-radius:20px;
+	text-align: center;
+}
+.DivLoginTitle{
+	color:white;
+	border:0px solid #000000;
+	font-size:20pt;
+	margin-top:100px;
+	font-weight:600;
+	font-family:华文行楷;
+}
+.DivLoginInfo{
+	background-color:transparent;
+}
+#liHint{
+	color:red;
+	text-align: center;
+	margin-top: 25px;
+	margin-left: -20px;
+}
