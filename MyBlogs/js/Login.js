@@ -1,6 +1,7 @@
 /// <reference path="../JQ_File/jquery-3.2.1.min.js" />
 //document.title=window.prompt("后台安全访问密码","");
 
+
 var CheckCode = "我的博客与后台登录！";//保存的验证码
 
 //信息校验不能为空
@@ -59,6 +60,7 @@ function GetVerifyCode() {
                         }
 
                     }, 1000);
+                    
                 }
             });
         }
@@ -75,9 +77,9 @@ function btnLogin_Click() {
         $btnLogin.click(function () {
             $liHint.html("");
             if (CheckInfo() == "Yes") {
-                var getData = { "name": $txtLoginName.val(),"pwd":$txtLoginPwd.val() };
+                var getData = { "name": $txtLoginName.val(), "pwd": $txtLoginPwd.val() };
+                
                 $.ajax({
-                    beforn: function () { $liHint.html("正在验证信息..."); },
                     url: "../ashx/btnLogin_GetData.ashx",
                     type:"get",
                     data: getData,
@@ -95,6 +97,7 @@ function btnLogin_Click() {
                         } else {
                             setLog($txtLoginName.val());
                             CheckCode = "我的博客与后台登录！";
+                           
                         }
                     }
                 });
@@ -119,23 +122,19 @@ function setLog(nameVal) {
         log.Country = remote_ip_info.country;
         log.Province = remote_ip_info.province;
         log.City = remote_ip_info.city;
-        $.getJSON(ipUrl, function (data) {
-            log.ip = data.Ip;
-            $.ajax({
-                type: "get",
-                url: "../ashx/AddLoginLog.ashx",
-                data:log,
-                success: function (returnInfo) {
-                    if (returnInfo == "Yes") {
-                        $liHint.html("登录成功!");
-                        window.location.href = "../Backstage_Index.html?myLoginName=" + nameVal;
-                    } else {
-                        alert("失败！");
-                    }
+        log.ip = returnCitySN["cip"];
+        $.ajax({
+            type: "get",
+            url: "../ashx/AddLoginLog.ashx",
+            data: log,
+            success: function (returnInfo) {
+                if (returnInfo == "Yes") {
+                    $liHint.html("登录成功!");
+                    window.location.href = "../Backstage_Index.html?myLoginName=" + nameVal;
+                } else {
+                    alert("失败！");
                 }
-            });
-
-
+            }
         });
     });
 }

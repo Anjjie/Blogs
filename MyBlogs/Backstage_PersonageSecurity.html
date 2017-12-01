@@ -5,12 +5,17 @@
 		<title>XLong - 后台管理</title>
 		<link rel="stylesheet" href="css/Backstage_Personage.css" />
         <link rel="stylesheet" href="css/Backstage_PersonageSecurity.css" />
+
 		<script type="text/javascript" src="JQ_File/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="js/Backstage_Personage.js" ></script>
+        <script type="text/javascript" src="js/Backstage_PersonageSecurity.js"></script>
+
 		<script type="text/javascript">
             $(function () {
+                LoadUserInfo();
                 saveName();
-				leftNavgation_Click();
+                leftNavgation_Click();
+                PageContentUrl();
 			});
 		</script>
 	</head>
@@ -24,10 +29,59 @@
 				</ul>
 			</div>
 		</div>
-		<div id="right_ContentBack">
-			<div class="center_BackContent">
-               
+        <div id="right_ContentBack">
+            <div class="center_BackContent">
+                <ul class="ulContent">
+                    <!-- 修改个人资料 -->
+                    <li class="liContent">
+                        <div class="left_Title">
+                            <p>更新资料</p>
+                        </div>
+                        <div class="middle_Hint"><p>
+                            完善个人信息资料，方便博客们更加了解您哟！
+                            </p> </div>
+                        <div class="right_Url"><p><label name="lbHint">未完善</label> | <a  name="aURL" href="#">完善</a> </p></div>
+                    </li>
+                    <!-- 修改头像 -->
+                    <li class="liContent">
+                        <div class="left_Title">
+                            <p>更换头像</p>
+                        </div>
+                        <div class="middle_Hint"><p>头像只是一个代表，你喜欢就换吧！换换换，越换越好看！</p> </div>
+                        <div class="right_Url"><p><label name="lbHint">已设置</label> | <a name="aURL"  href="#">更换</a> </p></div>
+                    </li>
+                    <!-- 修改密码 -->
+                    <li class="liContent">
+                        <div class="left_Title"><p>登录密码</p></div>
+                        <div class="middle_Hint">
+                            <p>安全性高的密码可以使帐号更安全。建议您定期更换密码，设置一个包含字母，符号或数字中至少两项且长度超过6位的密码。</p>
+                        </div>
+                        <div class="right_Url"><p><label name="lbHint">未完善</label> | <a name="aURL"  href="#">更改</a></p></div>
+                    </li>
+                    <!-- 设置密保问题 -->
+                    <li class="liContent">
+                        <div class="left_Title"><p>密保问题</p></div>
+                        <div class="middle_Hint">
+                            <p> 建议您设置三个容易记住，且最不容易被他人获取的问题及答案，更有效保障您的密码安全。</p>
+                        </div>
+                        <div class="right_Url"><p><label name="lbHint">未设置</label> | <a name="aURL"  href="#">设置</a></p></div>
+                    </li>
+                    <!-- 绑定邮箱 -->
+                    <li class="liContent">
+                        <div class="left_Title"><p>绑定邮箱</p></div>
+                        <div class="middle_Hint">
+                            <p>您未绑定电子邮箱，绑定电子邮箱将帮助您保护账号更加安全</p>
+                        </div>
+                        <div class="right_Url"><p><label name="lbHint">未绑定</label> | <a name="aURL"  href="#">绑定</a></p></div>
+                    </li>
+                    <!-- 绑定手机号码 -->
+                    <li class="liContent" style="border:0;">
+                        <div class="left_Title"><p>手机号码</p></div>
+                        <div class="middle_Hint"> <p>您未绑定手机号码，绑定手机号码将帮助您账号保护更加安全，并可用着登录！</p></div>
+                        <div class="right_Url"><p><label name="lbHint">未绑定</label> | <a name="aURL"  href="#" >绑定</a></p></div>
+                    </li>
+                </ul>
             </div>
-		</div>
+        </div>
 	</body>
 </html>
