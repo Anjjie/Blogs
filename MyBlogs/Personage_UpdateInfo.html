@@ -2,10 +2,46 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>XLong博客 - 修改密码</title>
 	<meta charset="utf-8" />
+	<link rel="stylesheet" href="css/Personage_UpdateInfo.css" />
+	<script type="text/javascript" src="JQ_File/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" src="js/Personage_UpdateInfo.js" ></script>
+	<script type="text/javascript">
+		$(function(){
+			SetCenterHeight();
+		});
+	</script>
+	
 </head>
 <body>
-    
+    <nav>
+    	<ul class="Nav">
+    		<li><label id="labelLogo">XLong博客</label> <label id="topLabel">· 个人信息</label></li>
+    	</ul>
+    </nav>
+	<center>
+		<div id="Content_CenterBack">
+			<ul>
+				<li>用&nbsp;&nbsp;户&nbsp;&nbsp;名：
+					<input type="text" id="txtUserName" value="" placeholder="用户名加载失败" disabled="disabled" style="width:250px ;" />
+				</li>
+				<li>昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：
+					<input type="text" id="txtNickName" value="" placeholder="请输入昵称" style="width:250px ;" />
+				</li>
+				<li>
+					<span >站长介绍：</span>
+					<div><textarea rows="6" cols="70" style="resize: none;"></textarea></div>
+				</li>
+				<li style="text-align: right;padding-right: 50px;">
+					<input type="button" id="btnSave" value="保存" style="width: 100px;height: 30px;background-color:#F75000;border: 0;color: #FFFFFF;" /></li>
+			</ul>
+		</div>
+	</center>
+    <footer>
+    	<ul>
+    		<li>XLong博客版权所有&nbsp;&nbsp;&nbsp;&nbsp;站长QQ：1078933133&nbsp;&nbsp;&nbsp;&nbsp;站长E-mail：Anjjiewm@163.com</li>
+    	</ul>
+    </footer>
 </body>
 </html>
