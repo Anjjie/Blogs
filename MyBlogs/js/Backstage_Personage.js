@@ -16,7 +16,7 @@ function LoadInfo() {
 
             $.each(data, function (i, obj) {
                 var imageUrl = "url(" + obj.P_Head + ")";
-                $divHead.css("background-image", imageUrl);
+                $divHead.css("background-image", "url(" + obj.P_Head + ")");
                 $divHead.html(obj.P_LoginName);
 
                 $.getJSON("../ashx/GetArticleAll.ashx", function (data) {

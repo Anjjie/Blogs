@@ -153,6 +153,49 @@ CREATE TABLE LoginLog
 )
 GO
 
+----【密保问题】
+IF OBJECT_ID('Issue') IS NOT NULL
+  DROP TABLE Issue
+GO
+CREATE TABLE Issue
+(
+	Issue_No INT IDENTITY(0,1) PRIMARY KEY,						--序号
+	P_LoginName NVARCHAR(50) NOT NULL,							--账号
+	Issue_1 NVARCHAR(200) NOT NULL,								--问题1
+	Issue_2 NVARCHAR(200) NOT NULL,								--问题2
+	Issue_3 NVARCHAR(200) NOT NULL,								--问题3
+	Answer_1 NVARCHAR(200) NOT NULL,							--答案1
+	Answer_2 NVARCHAR(200) NOT NULL,							--答案2
+	Answer_3 NVARCHAR(200) NOT NULL								--答案3
+)
+GO
+
+
+----【问题库】
+IF OBJECT_ID('Issue_library') IS NOT NULL
+  DROP TABLE Issue_library
+GO
+CREATE TABLE Issue_library
+(
+	IssueI_No INT IDENTITY(0,1) PRIMARY KEY,					--序号
+	IssueI_Name NVARCHAR(50) NOT NULL							--问题
+)
+GO
+
+
+----【邮箱】
+IF OBJECT_ID('Email') IS NOT NULL
+  DROP TABLE Email
+GO
+CREATE TABLE Email
+(
+	Email_No INT IDENTITY(0,1) PRIMARY KEY,						--序号
+	P_LoginName NVARCHAR(50) NOT NULL,							--账号
+	Email_Name NVARCHAR(200) NOT NULL,							--邮箱信息
+	Email_Activate NVARCHAR(200) NOT NULL						--是否激活
+	
+)
+GO
 
 
 

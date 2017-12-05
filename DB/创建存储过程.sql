@@ -507,6 +507,107 @@ GO
 GO
 
 
+------【密保问题】存储过程----------------------------------------------------------------------------------
+
+--查询
+IF EXISTS(SELECT * FROM sys.procedures WHERE name='Select_Issue')
+	DROP PROC Select_Issue
+GO
+	CREATE PROC Select_Issue
+	AS
+	SELECT * FROM Issue
+GO
+
+--添加
+IF EXISTS(SELECT * FROM sys.procedures WHERE name='Insert_Issue')
+	DROP PROC Insert_Issue
+GO
+	CREATE PROC Insert_Issue
+	@P_LoginName NVARCHAR(50),							--账号
+	@Issue_1 NVARCHAR(200),								--问题1
+	@Issue_2 NVARCHAR(200),								--问题2
+	@Issue_3 NVARCHAR(200),								--问题3
+	@Answer_1 NVARCHAR(200),							--答案1
+	@Answer_2 NVARCHAR(200),							--答案2
+	@Answer_3 NVARCHAR(200)								--答案3
+	AS
+	Insert Into Issue
+	VALUES(@P_LoginName,@Issue_1,@Issue_2,@Issue_3,@Answer_1,@Answer_2,@Answer_3)
+GO
+
+--修改
+IF EXISTS(SELECT * FROM sys.procedures WHERE name='Update_Issue')
+	DROP PROC Update_Issue
+GO
+	CREATE PROC Update_Issue
+	@Issue_No INT,						--序号
+	@P_LoginName NVARCHAR(50),							--账号
+	@Issue_1 NVARCHAR(200),								--问题1
+	@Issue_2 NVARCHAR(200),								--问题2
+	@Issue_3 NVARCHAR(200),								--问题3
+	@Answer_1 NVARCHAR(200),							--答案1
+	@Answer_2 NVARCHAR(200),							--答案2
+	@Answer_3 NVARCHAR(200)								--答案3
+	AS
+	Update Issue Set P_LoginName=@P_LoginName,Issue_1=@Issue_1,Issue_2=@Issue_2,Issue_3=@Issue_3,
+	Answer_1=@Answer_1,Answer_2=@Answer_2,Answer_3=@Answer_3 WHERE Issue_No=@Issue_No
+GO
+
+--删除
+IF EXISTS(SELECT * FROM sys.procedures WHERE name='Delete_Issue')
+	DROP PROC Delete_Issue
+GO
+	CREATE PROC Delete_Issue
+	@Issue_No INT 						--序号
+	AS
+	delete  FROM Issue  WHERE Issue_No=@Issue_No
+GO
+
+
+
+------【问题库】存储过程----------------------------------------------------------------------------------
+
+--查询
+IF EXISTS(SELECT * FROM sys.procedures WHERE name='Select_Issue_library')
+	DROP PROC Select_Issue_library
+GO
+	CREATE PROC Select_Issue_library
+	AS
+	SELECT * FROM Issue_library
+GO
+
+--添加
+IF EXISTS(SELECT * FROM sys.procedures WHERE name='Insert_Issue_library')
+	DROP PROC Insert_Issue_library
+GO
+	CREATE PROC Insert_Issue_library
+	@IssueI_Name NVARCHAR(200)							--问题
+	AS
+	Insert Into Issue_library
+	VALUES(@IssueI_Name)
+GO
+
+--修改
+IF EXISTS(SELECT * FROM sys.procedures WHERE name='Update_Issue_library')
+	DROP PROC Update_Issue_library
+GO
+	CREATE PROC Update_Issue_library
+	@IssueI_No INT,					--序号
+	@IssueI_Name NVARCHAR(50)							--问题
+	AS
+	Update Issue_library Set IssueI_Name=@IssueI_Name WHERE IssueI_No=@IssueI_No
+GO
+
+--删除
+IF EXISTS(SELECT * FROM sys.procedures WHERE name='Delete_Issue_library')
+	DROP PROC Delete_Issue_library
+GO
+	CREATE PROC Delete_Issue_library
+	@IssueI_No INT 						--序号
+	AS
+	delete  FROM Issue_library WHERE IssueI_No=@IssueI_No
+GO
+
 
 
 

@@ -20,6 +20,10 @@ namespace Models
         /// </summary>
         public string P_LoginPwd { get; set; }
         /// <summary>
+        /// 昵称
+        /// </summary>
+        public string P_NickName { get; set; }
+        /// <summary>
         /// 头像
         /// </summary>
         public string P_Head { get; set; }

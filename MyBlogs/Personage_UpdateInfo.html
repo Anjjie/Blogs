@@ -8,8 +8,10 @@
 	<script type="text/javascript" src="JQ_File/jquery-3.2.1.min.js" ></script>
 	<script type="text/javascript" src="js/Personage_UpdateInfo.js" ></script>
 	<script type="text/javascript">
-		$(function(){
-			SetCenterHeight();
+        $(function () {
+            SetCenterHeight();
+            GetUserName();
+            btnSave_Click();
 		});
 	</script>
 	
@@ -30,10 +32,10 @@
 					<input type="text" id="txtNickName" value="" placeholder="请输入昵称" style="width:250px ;" />
 				</li>
 				<li>
-					<span >站长介绍：</span>
-					<div><textarea rows="6" cols="70" style="resize: none;"></textarea></div>
+					<span >站长说明：</span>
+					<div><textarea id="txtMyExplain" rows="6" cols="70" style="resize: none;" placeholder="请输入站主说明信息"></textarea></div>
 				</li>
-				<li style="text-align: right;padding-right: 50px;">
+				<li style="text-align: right;padding-right:6.2%;">
 					<input type="button" id="btnSave" value="保存" style="width: 100px;height: 30px;background-color:#F75000;border: 0;color: #FFFFFF;" /></li>
 			</ul>
 		</div>

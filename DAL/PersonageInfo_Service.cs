@@ -35,6 +35,7 @@ namespace DAL
                     P_LoginPwd = dr["P_LoginPwd"].ToString(),
                     P_MyExplain = dr["P_MyExplain"].ToString(),
                     P_Phone = dr["P_Phone"].ToString(),
+                    P_NickName = dr["P_NickName"].ToString()
                 };
                 list.Add(personagerInfo);
             }
@@ -65,6 +66,7 @@ namespace DAL
                     P_LoginPwd = dr["P_LoginPwd"].ToString(),
                     P_MyExplain = dr["P_MyExplain"].ToString(),
                     P_Phone = dr["P_Phone"].ToString(),
+                    P_NickName = dr["P_NickName"].ToString()
                 };
             }
             dr.Close();
@@ -86,7 +88,8 @@ namespace DAL
                       new SqlParameter("@P_LoginName",obj.P_LoginName),
                        new SqlParameter("@P_LoginPwd",obj.P_LoginPwd),
                         new SqlParameter("@P_MyExplain",obj.P_MyExplain),
-                         new SqlParameter("@P_Phone",obj.P_Phone)
+                         new SqlParameter("@P_Phone",obj.P_Phone),
+                          new SqlParameter("@P_NickName",obj.P_NickName)
 
                 });
             return n;
@@ -99,14 +102,15 @@ namespace DAL
         /// <returns></returns>
         public static int UpdatePersonageInfo(PersonageInfo obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Insert_PersonageInfo", CommandType.StoredProcedure,
+            int n = DBHelper.ExecuteNonQuery("Update_PersonageInfo", CommandType.StoredProcedure,
                 new SqlParameter[] {
                   new SqlParameter("@P_DataTime",obj.P_DataTime),
                      new SqlParameter("@P_Head",obj.P_Head),
                       new SqlParameter("@P_LoginName",obj.P_LoginName),
                        new SqlParameter("@P_LoginPwd",obj.P_LoginPwd),
                         new SqlParameter("@P_MyExplain",obj.P_MyExplain),
-                         new SqlParameter("@P_Phone",obj.P_Phone)
+                         new SqlParameter("@P_Phone",obj.P_Phone),
+                          new SqlParameter("@P_NickName",obj.P_NickName)
 
                 });
             return n;
@@ -119,7 +123,7 @@ namespace DAL
         /// <returns></returns>
         public static int DeletePersonageInfo(PersonageInfo obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Insert_PersonageInfo", CommandType.StoredProcedure,
+            int n = DBHelper.ExecuteNonQuery("Delete_PersonageInfo", CommandType.StoredProcedure,
                 new SqlParameter[] {
                       new SqlParameter("@P_LoginName",obj.P_LoginName)
                 });

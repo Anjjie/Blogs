@@ -66,4 +66,18 @@ EXEC Insert_MassageBoard '前端是什么？','看看留言，快乐一天','2017-11-29 16:59:1
 
 
 
+Exec [Insert_Issue_library] '您目前的姓名是？'
+Exec [Insert_Issue_library] '您配偶的生日是？'
+Exec [Insert_Issue_library] '您的学号（或工号）是？'
+Exec [Insert_Issue_library] '您母亲的生日是？'
+Exec [Insert_Issue_library] '您高中班主任的名字是？'
+Exec [Insert_Issue_library] '您父亲的姓名是？'
+Exec [Insert_Issue_library] '您小学班主任的名字是？'
+Exec [Insert_Issue_library] '您父亲的生日是？'
+Exec [Insert_Issue_library] '您配偶的姓名是？'
+Exec [Insert_Issue_library] '您初中班主任的名字是？'
+Exec [Insert_Issue_library] '对您影响最大的人名字是？'
+Exec [Insert_Issue_library] '您最熟悉的学校宿舍舍友名字是？'
+Exec [Insert_Issue_library] '您最熟悉的童年好友名字是？'
+
 

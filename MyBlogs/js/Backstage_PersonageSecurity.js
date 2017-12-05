@@ -8,8 +8,11 @@ function PageContentUrl() {
     var $a = $("a[name='aURL']");
     $a.click(function () {
         var index = $(this).index("a");
-        var allUrl = ["UpdateInfo", "UpdateHead", "UpdatePassword", "SetIssue", "SetEmail","SetPhone"];
-        var getUrl = "../Personage_" + allUrl[index] + ".html?name="+name;
+        var allUrl = ["UpdateInfo", "SetHead", "UpdatePassword", "SetIssue", "SetEmail","SetPhone"];
+        var getUrl = "../Personage_" + allUrl[index] + ".html?name=" + name;
+        if (allUrl[index] == "SetHead") {
+            getUrl = "../Personage_" + allUrl[index] + ".aspx?name=" + name;
+        }
         $(this).attr({
             "target": "_blank",
             "href": getUrl });
