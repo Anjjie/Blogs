@@ -45,6 +45,8 @@
     <Compile Include="Article_Manager.cs" />
     <Compile Include="Comment_Manager.cs" />
     <Compile Include="InfoCount_Manager.cs" />
+    <Compile Include="Issue_library_Manager.cs" />
+    <Compile Include="Issue_Manager.cs" />
     <Compile Include="LoginLog_Manager.cs" />
     <Compile Include="MassageBoard_Manager.cs" />
     <Compile Include="PersonageInfo_Manager.cs" />

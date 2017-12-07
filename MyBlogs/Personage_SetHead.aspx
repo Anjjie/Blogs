@@ -14,7 +14,7 @@
 	    $(function () {
 	        $("#userName").val($(location).attr("href").split('=')[1]);
             SetCenterHeight();
-            GetUserName();
+            //GetUserName();
             selFile_change();
             GetUPImage();
 		});

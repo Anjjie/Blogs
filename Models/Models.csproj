@@ -45,6 +45,8 @@
     <Compile Include="ArticleType.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="InfoCount.cs" />
+    <Compile Include="Issue.cs" />
+    <Compile Include="Issue_library.cs" />
     <Compile Include="LoginLog.cs" />
     <Compile Include="MassageBoard.cs" />
     <Compile Include="PersonageInfo.cs" />

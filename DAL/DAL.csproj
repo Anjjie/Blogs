@@ -47,6 +47,8 @@
     <Compile Include="Comment_Service.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="InfoCount_Service.cs" />
+    <Compile Include="Issue_library_Server.cs" />
+    <Compile Include="Issue_Server.cs" />
     <Compile Include="LoginLog_Service.cs" />
     <Compile Include="MassageBoard_Service.cs" />
     <Compile Include="PersonageInfo_Service.cs" />

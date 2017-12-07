@@ -1,11 +1,135 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/Persomage_SetIssue.css" />
+    <script type="text/javascript" src="JQ_File/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/Personage_UpdateInfo.js"></script>
+    <script type="text/javascript" src="js/Personage_SetIssue.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            SetCenterHeight();
+            LoadLastNext();
+            btnSave_click();
+            divGetVerifyCode_click();
+		});
+    </script>
+
 </head>
 <body>
-    问题
+    <nav>
+        <ul class="Nav">
+            <li><label id="labelLogo">XLong博客</label> <label id="topLabel">· 设置密保</label></li>
+        </ul>
+    </nav>
+    <center>
+        <div id="Content_CenterBack">
+            <!-- 验证原密保问题、手机验证信息（双层验证方可修改） -->
+            <div id="Content_Page1">
+                <ul>
+                    <li>
+                        <div  class="divIssue">
+                            【问题一】<label id="lbIssue1"> 1+1=？</label>
+                        </div>
+                        <div  class="divAnswer">
+                            <input type="text" id="txtIssue1" value="" class="txtAnswer" placeholder="请根据以上问题填写当初设置的答案" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="divIssue">
+                            【问题二】 <label id="lbIssue2"> 2+2=？</label>
+                        </div>
+                        <div class="divAnswer">
+                            <input type="text" id="txtIssue2" value="" class="txtAnswer"  placeholder="请根据以上问题填写当初设置的答案"  />
+                        </div>
+                    </li>
+                    <li>
+                        <div  class="divIssue">
+                            【问题三】<label id="lbIssue3"> 3+3=？</label>
+                        </div>
+                        <div  class="divAnswer">
+                            <input type="text" id="txtIssue3" value=""  class="txtAnswer"  placeholder="请根据以上问题填写当初设置的答案"  />
+                        </div>
+                    </li>
+                    <li>
+                        <div id="divPhoneVerify">
+                            <!-- 左 -->
+                            <div class="divPhoneVerify_left">手机验证码</div>
+                            <!-- 中 -->
+                            <div class="divPhoneVerify_center">
+                                <input type="text" id="txtPhoneVerify" value="" placeholder="请输入已绑定手机号码收到的验证码信息"  />
+                            </div>
+                            <!-- 右 -->
+                            <div id="divGetVerifyCode" class="divPhoneVerify_right"  data-verifyCode="" >获取验证码</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="divHint">
+                            <label id="lbHint"></label>
+                        </div>
+                        <div class="divButton">
+                            <input type="button" id="btnNext" value="下一步"   class="inputButton" />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="Content_Page2">
+                <ul>
+                    <li>
+                        <div class="divIssue">
+                            【问题一】<label id="lbIssues1">
+                                    <select id="selIssue1">
+                                        <option value="请选择问题">请选择问题</option>
+                                    </select>
+                            </label>
+                        </div>
+                        <div class="divAnswer">
+                            <input type="text" id="txtIssues1" value="" class="txtAnswer" placeholder="请填写您的密保问题答案" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="divIssue">
+                            【问题二】 <label id="lbIssues2">
+                                      <select id="selIssue2">
+                                          <option value="请选择问题">请选择问题</option>
+                                      </select>
+                            </label>
+                        </div>
+                        <div class="divAnswer">
+                            <input type="text" id="txtIssues2" value="" class="txtAnswer" placeholder="请填写您的密保问题答案" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="divIssue">
+                            【问题三】<label id="lbIssues3"> 
+                                     <select id="selIssue3">
+                                         <option value="请选择问题">请选择问题</option>
+                                     </select>
+                            </label>
+                        </div>
+                        <div class="divAnswer">
+                            <input type="text" id="txtIssues3" value="" class="txtAnswer" placeholder="请填写您的密保问题答案" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="divHint">
+                            <label id="lbHints"></label>
+                        </div>
+                        <div class="divButton">
+                            <input type="button" id="btnLast" value="上一步" class="inputButton" />
+                            <input type="button" id="btnSave" value="保存" class="inputButton" data-type=""  />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </center>
+    <footer>
+        <ul>
+            <li>XLong博客版权所有&nbsp;&nbsp;&nbsp;&nbsp;站长QQ：1078933133&nbsp;&nbsp;&nbsp;&nbsp;站长E-mail：Anjjiewm@163.com</li>
+        </ul>
+    </footer>
 </body>
 </html>

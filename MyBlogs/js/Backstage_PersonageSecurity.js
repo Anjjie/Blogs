@@ -87,8 +87,19 @@ function LoadUserInfo() {
                         $lbHint.eq(i).html(hint);
                         break;
                     case 3:
-                        $lbHint.eq(i).css("color", "#CE0000");
-                        $lbHint.eq(i).html("正在开发");
+                        $.getJSON("../ashx/GetPersonage_Issue.ashx", name, function (data) {
+                            if (data != null) {
+                                $lbHint.eq(3).css("color", "#00BB00");
+                                $lbHint.eq(3).html("已设置");
+                                $a.eq(3).html("更改");
+                               
+                            } else {
+                                alert(222);
+                                $lbHint.eq(3).html("未设置");
+                                $a.eq(3).html("设置");
+                            }
+                        });
+                       
                         break;
                     case 4:
                         $lbHint.eq(i).css("color", "#CE0000");
