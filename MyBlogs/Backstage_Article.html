@@ -1,9 +1,33 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>XLong - 后台管理</title>
 		<link rel="stylesheet" href="css/Backstage_Personage.css" />
+        <script src="JQ_File/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript">
+
+            function LeftNavUrl() {
+                var name = $(location).attr("href").split('=')[1];
+                
+                var $left_li = $(".left_li");
+                var $myiframe = $("#myiframe");
+
+                $myiframe.attr("src", "Article_Publish.html?name="+name);
+
+                $left_li.click(function () {
+                    var index= $(this).index("li");
+                    var allUrl = ["Article_Publish", "Article_MyComment", "Article_Reoly",
+                    "Article_Manager", "Article_CommentManager", "Article_ReolyManager"];
+                    var url = allUrl[index] + ".html?name=" + name;
+                    $myiframe.attr("src", url);
+                });
+            }
+
+            $(function () {
+                LeftNavUrl();
+            });
+        </script>
 	</head>
 	<body>
 		<div id="left_NavgetionBack">
@@ -11,12 +35,16 @@
 			<div id="left_divContent">
 				<ul>
 					<li class="left_li">发布文章</li>
-					<li class="left_li">文章管理</li>
 					<li class="left_li">我的评论</li>
 					<li class="left_li">我的回复</li>
+                    <li class="left_li">文章管理</li>
+                    <li class="left_li">评论管理</li>
+                    <li class="left_li">回复管理</li>
 				</ul>
 			</div>
 		</div>
-		<div id="right_ContentBack"></div>
+		<div id="right_ContentBack">
+            <iframe id="myiframe" style="width:100%;height:99%;border:0;" ></iframe>
+        </div>
 	</body>
 </html>

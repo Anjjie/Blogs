@@ -5,7 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>XLong博客 - 更改头像</title>
+    <link href="css/Login.css" type="text/css" rel='stylesheet' />
     <link rel="stylesheet" href="css/Personage_SetHead.css" />
 	<script type="text/javascript" src="JQ_File/jquery-3.2.1.min.js" ></script>
 	<script type="text/javascript" src="js/Personage_UpdateInfo.js" ></script>

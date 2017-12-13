@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/Article_Publish.css" />
+
+    <link href="css/colpick.css" rel="stylesheet" />
+
+    <link href="css/normalize.css" rel="stylesheet" />
+
+    <script src="JQ_File/jquery-3.2.1.min.js"></script>
+
+    <script src="js/Palette.js"></script>
+
+    <script src="js/Article_Publish.js"></script>
+
+    <script>
+        
+        $(function () {
+            //CloseHint();
+           
+            $("#One_table_FontColorId").colpick();
+            GetColor();
+            One_table_AddUrl_Click();
+            btnUp_Click();
+            One_table_AddImage_click();
+            Load_Paragraph_Click();
+        });
+    </script>
+</head>
+<body>
+    <div id="all">
+       <ul>
+           <li id="publishArticle_Title">
+               &nbsp; &nbsp;发布文章
+           </li>
+           <li id="Article_Title">
+             标题 <input type="text" id="txtTitle" value="" placeholder="请在此输入文章标题 [请根据要求输入标题，禁止输入违法等相关知识标题]" />
+           </li>
+           <li id="Article_Content">
+               内容
+               <ul>
+                   <li class="li_Content">
+                     <table>
+                         <tbody>
+                             <tr>
+                                 <td>
+                                      <!-- 内容工具栏 -->
+                                      <!-- 第一栏:字体颜色、粗体、斜体、删除线、无序编号、有序编号、对齐方式 、
+                                          添加链接、清除链接、添加图片、添加文件、段落、字体、字体大小-->
+                                     <div class="divOne">
+                                         <table class="table_ContentToolbar">
+                                            <tbody>
+                                                <tr class="trOne">
+                                                    <!-- 字体颜色 -->
+                                                    <td>
+                                                        <table id="One_table_FontColorId" class="One_table_FontColor" title="文字颜色">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_FontImage_A"></div>
+                                                                        <div class="One_FontColor_A"></div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="One_FontColor_Last"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <!-- 颜色面板 -->
+                                                        <!--<div style="position:absolute;z-index:20000;width:150px;height:120px;border:1px solid #808080;background-color:#ffffff;">
+                                                            <table class="SelColor">
+                                                                <tr >
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                </tr>
+                                                                <tr >
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                </tr>
+                                                                <tr >
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                </tr>
+                                                                <tr >
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                </tr>
+                                                                <tr >
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                </tr>
+                                                                <tr >
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                    <td class="SelColor_td"></td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>-->
+                                                    </td>
+                                                    <!-- 粗体 -->
+                                                    <td >
+                                                        <table class="One_table_bold" title="粗体" onclick="bold();">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_blod"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <!-- 斜体 -->
+                                                    <td>
+                                                        <table class="One_table_italic" title="斜体" onclick="italic();">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_italic"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <!-- 删除线 -->
+                                                    <td>
+                                                        <table class="One_table_strikethrough" title="删除线" onclick="strikeThrough();">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_strikethrough"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <!-- 无序编号 -->
+                                                    <td>
+                                                        <table class="One_table_unorderedNo" title="无序列表" onclick="insertUnorderedList();">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_unorderedNo"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <!-- 有序编号 -->
+                                                    <td>
+                                                        <table class="One_table_well-aligned" title="有序列表" onclick="insertOrderedList();">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_well-aligned"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <!-- 对齐方式:靠左 -->
+                                                    <td>
+                                                        <table class="One_table_keepleft" title="靠左对齐" onclick="justifyLeft();">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_keepleft"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <!-- 对齐方式:居中 -->
+                                                    <td>
+                                                        <table class="One_table_middle" title="居中对齐" onclick="justifyCenter();">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_middle"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <!-- 对齐方式:靠右 -->
+                                                    <td>
+                                                        <table class="One_table_keepright" title="靠右对齐" onclick="justifyRight();">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_keepright"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <!-- 添加链接 -->
+                                                    <td>
+                                                        <table class="One_table_AddUrl" title="添加链接">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_AddUrl"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="Background_AddUrl">
+                                                            <p>标题:<br/>
+                                                                <input id="txtUrlTitle" type="text" value="" placeholder="请输入链接标题" />
+                                                            </p>
+                                                            <p>Url:<br />
+                                                                <input id="txtUrl" type="url" value="" placeholder="请输入链接" />
+                                                            </p>
+                                                            <input id="btnUrlOk" type="button" value="OK" />
+                                                            <input id="btnUrlReset" type="button" value="重置" />
+                                                        </div>
+                                                    </td>
+                                                    <!-- 清除链接 -->
+                                                    <td>
+                                                        <table class="One_table_ClearUrl" title="清除链接" onclick="unlink();">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_ClearUrl"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <!-- 添加图片 -->
+                                                    <td>
+                                                        <table class="One_table_AddImage" title="本地上传">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_AddImage"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="Background_AddImage">
+                                                            <ul>
+                                                                <li class="AddImage_top">
+                                                                    <input type="file" id="selFile" value="" hidden="hidden" />
+                                                                    <input id="btnUp" type="button" value="上传" title="请选择图片"  />
+                                                                    <div id="divHint">
+                                                                        <div id="divHint_triangle"></div>
+                                                                        <div id="divHint_Content"></div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="AddImage_middle">
+                                                                    <div id="AddImage_Show">
+                                                                        图片浏览
+                                                                    </div>
+                                                                </li>
+                                                                <li class="AddImage_bottom">
+                                                                    
+                                                                    <div id="AddImage_Number" style="width:100%;height:100%;border:0;border-top:1px solid #808080; text-align:center;">
+                                                                        进度君
+                                                                    </div>
+                                                                    <div id="AddImage_progress"> </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                    <!-- 段落 -->
+                                                    <td>
+                                                        <table class="One_table_paragraph" title="段落">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_paragraph">
+                                                                            <select id="setParagraph" style="width:100%;height:100%;">
+                                                                                <option value="">段落</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <!-- 字体 -->
+                                                    <td>
+                                                        <table class="One_table_Fontfamily" title="字体">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_Fontfamily">
+                                                                            <select style="width:100%;height:100%;">
+                                                                                <option>字体</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <!-- 字体大小 -->
+                                                    <td>
+                                                        <table class="One_table_FontSize" title="字体大小">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="One_FontSize">
+                                                                            <select style="width:100%;height:100%;">
+                                                                                <option>字体大小</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                         </table>
+                                     </div>
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <td style="border:0px solid #808080;border-top:0;height:470px;">
+                                    <iframe id="Content_iframe" contenteditable="true" >
+                                    </iframe> 
+                                     <script>
+                                         //document.getElementById("Content_iframe").contentWindow.document.designMode = "on";
+                                         document.getElementById("Content_iframe").contentDocument.documentElement.contentEditable = "true";
+                                     </script>
+                                 </td>
+                             </tr>
+                         </tbody>
+                     </table>
+                   </li>
+               </ul>
+           </li>
+           <li id="Article_Content">
+             类型选择
+                   <select><option>请选择</option></select>
+           </li>
+           <li id="Article_Content">
+             <input type="button" value="发布" /> 
+           </li>
+       </ul>
+    </div>
+</body>
+</html>

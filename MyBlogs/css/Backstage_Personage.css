@@ -79,7 +79,29 @@ li{
 	background-color:transparent;
 	float: left;
 }
+#divInfo{
+    cursor:pointer;
+    z-index:99;
+    margin-top:15px;
+	left: 50%;
+	margin-left: -182px;
+	position:relative;
+	border-radius:10px;
+	width: 177px;
+	height: 120px;
+	border: 1px solid #DCDCDC;
+	overflow: hidden;
+	font-size: 11pt;
+	color:#FFFFFF;
+	float: left;
+	font-family: "宋体";
+    background-color:rgba(79, 79, 79, 0.80);
+    padding-top:60px;
+    padding-left:3px;
+    display:none;
+}
 #divHead{
+    cursor:pointer;
 	margin-top:15px;
 	left: 50%;
 	margin-left: -90px;
@@ -92,7 +114,7 @@ li{
 	text-align: center;
 	line-height: 320px;
 	font-size: 15pt;
-	color:#008bff;
+	color:#DCDCDC;
 	float: left;
 	font-family: "宋体";
     /*background-size:cover;*/

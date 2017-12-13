@@ -8,6 +8,8 @@ function LoadInfo() {
     var $divMassageCount = $("#divMassageCount");
     var $ulRecentlyArticle = $("#ulRecentlyArticle");
     var $divLoginLogContent = $("#divLoginLogContent");
+    var $divInfo = $("#divInfo");
+
 
 
     $.getJSON("../ashx/GetUserInfo.ashx", name,
@@ -17,7 +19,10 @@ function LoadInfo() {
             $.each(data, function (i, obj) {
                 var imageUrl = "url(" + obj.P_Head + ")";
                 $divHead.css("background-image", "url(" + obj.P_Head + ")");
-                $divHead.html(obj.P_LoginName);
+                $divInfo.html("账号：" + obj.P_LoginName
+                                 + "<br/>昵称：" + obj.P_NickName
+                                + "<br/>手机：" + obj.P_Phone
+                    );
 
                 $.getJSON("../ashx/GetArticleAll.ashx", function (data) {
                     $.each(data, function (i, obj) {
@@ -65,7 +70,23 @@ function LoadInfo() {
             });
         }
        );
-   
+
+    $divHead.on({
+        "mousemove": function () {
+            $divHead.html("单击查看详细");
+        },
+        "mouseout": function () {
+            $divHead.html("");
+        },
+        "click": function () {
+            $divInfo.slideToggle(1000);
+        }
+    });
+
+    $divInfo.click(function () {
+        $divInfo.slideToggle(1000);
+    });
+
 }
 //获取登录值
 function saveName() {
