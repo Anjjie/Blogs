@@ -1,16 +1,13 @@
 ﻿/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
 
 function CloseHint() {
+
     window.onbeforeunload = function () {
-        //return "你确认离开吗？";
-            var n = window.event.screenX - window.screenLeft;
-
-            var b = n > document.documentElement.scrollWidth - 20;
-
-            if (!(b && window.event.clientY < 0 || window.event.altKey)) {
-                window.event.returnValue = "真的要刷新页面么？";
+            if ( $("#txtTitle").val()!="") {
+                return "确定要离开吗？离开后当前输入的数据见清除掉！";
+            } else if ($("#Content_iframe").contents().find("body").html()!="") {
+                return "确定要离开吗？离开后当前输入的数据见清除掉！";
             }
-
     }
    
 }
@@ -113,8 +110,20 @@ function insertImage(url) {
     editors("insertImage", true, url);
 }
 
+function formatBlock(block) {
+    editors("formatBlock", true, block);
+}
+
 function foreColor(color) {
     editors("foreColor", true, color);
+}
+
+function fontName(name) {
+    editors("fontName", true, name);
+}
+
+function fontSize(size) {
+    editors("fontSize", true, size);
 }
 
 function btnUp_Click() {
@@ -273,19 +282,127 @@ function Load_Paragraph_Click() {
     var $setParagraph = $("#setParagraph");
 
     var AllTitle = ["标题1", "标题2", "标题3", "标题4", "标题5", "标题6"];
-    var AllValie = ["title1", "title2", "title3", "title4", "title5", "title6"];
+    var AllFont_Size = ["25","20","15","12","10","5"];
+    var AllValie = ["h1", "h2", "h3", "h4", "h5", "h6"];
 
-    var option = "<option valie='段落'>段落</option>";
+    var option = "<option>标题</option>";
     for (var i = 0; i < AllTitle.length; i++) {
-        option += "<option valie='" + AllValie[i] + "'>" + AllTitle[i] + "</option>";
+        option += "<option style='font-size:" + AllFont_Size [i]+ "pt;font-weight:550;'>" + AllTitle[i] + " </option>";
     }
     $setParagraph.html(option);
 
+    $setParagraph.change(function () {
+        var val = "";
+        switch ($setParagraph.val()) {
+            case AllTitle[0]:
+                val=AllValie[0];
+                break;
+            case AllTitle[1]:
+                val = AllValie[1];
+                break;
+            case AllTitle[2]:
+                val = AllValie[2];
+                break;
+            case AllTitle[3]:
+                val = AllValie[3];
+                break;
+            case AllTitle[4]:
+                val = AllValie[4];
+                break;
+            case AllTitle[5]:
+                val = AllValie[5];
+                break;
+            case AllTitle[6]:
+                val = AllValie[6];
+                break;
+            default:
+                val = "p";
+                break;
+        }
 
-    $setParagraph.select(function () {
-
+        var browser = window.navigator.userAgent;
+        if (browser.indexOf('MSIE')>=0) {
+            val = "<" + val + ">"
+        }
+        formatBlock(val);
     });
 }
 
+function Load_setFamily_Click() {
+    var $setFamily = $("#setFamily");
+
+    var family = ["宋体", "仿宋", "黑体", "楷体", "隶书", "华文彩云",
+        "华文细黑", "华文新魏", "华文行楷", "华文中宋", "幼圆",
+        "Arial", "Comic Sans MS", "Courier New", "Tahoma", "Times New Roman", "Wingdings"];
+    var f_length = family.length;
+
+    var option = "<option>字体</option>";
+
+    for (var i = 0; i < f_length; i++) {
+        option += "<option style='font-family:" + family[i] + "'>" + family[i] + "</option>";
+    }
+
+    $setFamily.html(option);
+
+    $setFamily.change(function () {
+        fontName($setFamily.val());
+    });
+
+}
+
+function Load_setFontSize_Click() {
+    var $setFontSize = $("#setFontSize");
+
+    var size = ["特小", "较小", "小", "中", "大", "较大", "特大"];
+    var s_length = size.length;
+
+    var option = "<option >字体大小</option>";
+
+    for (var i = 0; i < s_length; i++) {
+        option += "<option>" + size[i] + "</option>";
+    }
+
+    $setFontSize.html(option);
+
+    $setFontSize.change(function () {
+        var setSize = "";
+        switch ($setFontSize.val()) {
+            case size[0]:
+                setSize = 1;
+                break;
+            case size[1]:
+                setSize = 2;
+                break;
+            case size[2]:
+                setSize = 3;
+                break;
+            case size[3]:
+                setSize = 4;
+                break;
+            case size[4]:
+                setSize = 5;
+                break;
+            case size[5]:
+                setSize = 6;
+                break;
+            case size[6]:
+                setSize = 7;
+                break;
+        }
+        fontSize(setSize);
+    });
+
+}
+
+function Load_setType() {
+
+    $.ajax({
+        type: "get",
+        url: "../ashx/GetArticleTypeAll.ashx",
+        success: function (ret) {
+            $("#setType").html(ret);
+        }
+    });
+}
 
 

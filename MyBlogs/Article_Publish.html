@@ -19,14 +19,22 @@
     <script>
         
         $(function () {
-            //CloseHint();
-           
-            $("#One_table_FontColorId").colpick();
-            GetColor();
-            One_table_AddUrl_Click();
-            btnUp_Click();
-            One_table_AddImage_click();
-            Load_Paragraph_Click();
+            CloseHint();
+            var explorers = window.navigator.userAgent;
+
+            if (explorers.indexOf('Firefox') >= 0) {
+
+            } else {
+                Load_setType();
+                $("#One_table_FontColorId").colpick();
+                GetColor();
+                One_table_AddUrl_Click();
+                btnUp_Click();
+                One_table_AddImage_click();
+                Load_Paragraph_Click();
+                Load_setFamily_Click();
+                Load_setFontSize_Click();
+            }
         });
     </script>
 </head>
@@ -303,13 +311,13 @@
                                                     </td>
                                                     <!-- 段落 -->
                                                     <td>
-                                                        <table class="One_table_paragraph" title="段落">
+                                                        <table class="One_table_paragraph" title="标题">
                                                             <tbody>
                                                                 <tr>
                                                                     <td>
                                                                         <div class="One_paragraph">
                                                                             <select id="setParagraph" style="width:100%;height:100%;">
-                                                                                <option value="">段落</option>
+                                                                                <option value="" >标题</option>
                                                                             </select>
                                                                         </div>
                                                                     </td>
@@ -323,8 +331,8 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td>
-                                                                        <div class="One_Fontfamily">
-                                                                            <select style="width:100%;height:100%;">
+                                                                        <div class="One_Fontfamily"  style="width:100px;" >
+                                                                            <select id="setFamily" style="width:100%;height:100%;">
                                                                                 <option>字体</option>
                                                                             </select>
                                                                         </div>
@@ -340,7 +348,7 @@
                                                                 <tr>
                                                                     <td>
                                                                         <div class="One_FontSize">
-                                                                            <select style="width:100%;height:100%;">
+                                                                            <select id="setFontSize" style="width:100%;height:100%;">
                                                                                 <option>字体大小</option>
                                                                             </select>
                                                                         </div>
@@ -362,7 +370,30 @@
                                     </iframe> 
                                      <script>
                                          //document.getElementById("Content_iframe").contentWindow.document.designMode = "on";
-                                         document.getElementById("Content_iframe").contentDocument.documentElement.contentEditable = "true";
+                                        
+
+                                         var explorer=window.navigator.userAgent;
+
+                                         if (explorer.indexOf('Firefox')>=0) {
+                                             var ifa = document.getElementById('Content_iframe');
+
+                                             //ifa.contentWindow.document.designMode = "on";
+                                            
+
+                                             $(function () {
+                                                 $("#btnSend").css("display", "none");
+                                                 $("#btnSend").val("禁止发送");
+                                             });
+                                             ifa.contentWindow.document.contentEditable = false;
+                                             ifa.contentWindow.document.open();
+                                             ifa.contentWindow.document.write('<html><head></head><body style="font-size:12pt;">对不起，您当前使用的是火狐浏览器！<br />现在暂时不支持火狐浏览器进行操作，谢谢！<br/> </body></html>');
+                                             ifa.contentWindow.document.close();
+                                         } else {
+
+                                             document.getElementById("Content_iframe").contentDocument.documentElement.contentEditable = "true";
+                                         }
+                                         
+
                                      </script>
                                  </td>
                              </tr>
@@ -371,12 +402,15 @@
                    </li>
                </ul>
            </li>
-           <li id="Article_Content">
+           <li id="Article_Type">
              类型选择
-                   <select><option>请选择</option></select>
+               <select id="setType">
+                    <option>请选择</option>
+               </select>
            </li>
-           <li id="Article_Content">
-             <input type="button" value="发布" /> 
+           <li id="Article_Send">
+             <label id="lbSend_Hint">提示:发布按钮单击函数没有做！</label>
+             <input id="btnSend" type="button" value="发布"  /> 
            </li>
        </ul>
     </div>
