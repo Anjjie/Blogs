@@ -20,6 +20,30 @@ namespace DAL
         /// 创建连接对象
         /// </summary>
         static  SqlConnection con =null;
+
+        static SqlConnection Conn() {
+            if (con == null || con.ConnectionString == "")
+            {
+                con = new SqlConnection(conStr);
+            }
+            switch (con.State)
+            {
+                case ConnectionState.Closed:
+                    con.Open();
+                    break;
+                case ConnectionState.Open:
+                    con.Close();
+                    break;
+                case ConnectionState.Broken:
+                    con.Close();
+                    con.Open();
+                    break;
+                default:
+                    break;
+            }
+            return con;
+        }
+
         /// <summary>
         /// 实例化连接对象
         /// </summary>
@@ -86,6 +110,15 @@ namespace DAL
             int n = com.ExecuteNonQuery();
             CloseCon();
             return n;
+        }
+
+        public static DataSet GetDataSet(string sql, CommandType type, params SqlParameter[] paras) {
+            DataSet ds = new DataSet();
+            SqlDataAdapter sda = new SqlDataAdapter(sql, Conn());
+            sda.SelectCommand.CommandType = type;
+            sda.SelectCommand.Parameters.AddRange(paras);
+            sda.Fill(ds);
+            return ds;
         }
 
     }

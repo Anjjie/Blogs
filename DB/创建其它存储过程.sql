@@ -17,3 +17,18 @@ GO
 	AS
 	SELECT top(9) * FROM LoginLog where P_LoginName=@P_LoginName order by Log_No desc 
 GO
+
+--删除【文章】多条信息
+IF EXISTS(SELECT * FROM sys.procedures WHERE name='Delete_ArticleMore')
+  DROP PROC Delete_ArticleMore
+GO
+ CREATE PROC Delete_ArticleMore
+ @MoreNo varchar(1000) 
+ as
+ Delete from Article where A_No in (@MoreNo)
+ 
+ 
+ Delete from Article where A_No in (69,81)
+ 
+ exec Delete_ArticleMore '86'
+ select * from Article

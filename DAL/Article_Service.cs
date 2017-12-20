@@ -21,26 +21,46 @@ namespace DAL
         /// 获取全部文章信息
         /// </summary>
         /// <returns></returns>
+        //public static List<Article> GetAllArticle()
+        //{
+        //    List<Article> list = new List<Article>();
+        //    SqlDataReader dr = DBHelper.ExecuteReader("Select_Article", CommandType.StoredProcedure);
+        //    while (dr.Read())
+        //    {
+        //        Article article = new Article() {
+        //            A_Author=dr["A_Author"].ToString(),
+        //            A_Content = dr["A_Content"].ToString(),
+        //            A_DateTime = dr["A_DateTime"].ToString(),
+        //            A_No = Convert.ToInt32( dr["A_No"]),
+        //            A_Title = dr["A_Title"].ToString(),
+        //            A_TypeName = dr["A_TypeName"].ToString()
+        //        };
+        //        list.Add(article);
+        //    }
+        //    dr.Close();
+        //    DBHelper.CloseCon();
+        //    return list;
+        //}
         public static List<Article> GetAllArticle()
         {
             List<Article> list = new List<Article>();
-            SqlDataReader dr = DBHelper.ExecuteReader("Select_Article", CommandType.StoredProcedure);
-            while (dr.Read())
+            DataSet ds = DBHelper.GetDataSet("Select_Article", CommandType.StoredProcedure);
+            foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                Article article = new Article() {
-                    A_Author=dr["A_Author"].ToString(),
+                Article article = new Article()
+                {
+                    A_Author = dr["A_Author"].ToString(),
                     A_Content = dr["A_Content"].ToString(),
                     A_DateTime = dr["A_DateTime"].ToString(),
-                    A_No = Convert.ToInt32( dr["A_No"]),
+                    A_No = Convert.ToInt32(dr["A_No"]),
                     A_Title = dr["A_Title"].ToString(),
                     A_TypeName = dr["A_TypeName"].ToString()
                 };
                 list.Add(article);
             }
-            dr.Close();
-            DBHelper.CloseCon();
             return list;
         }
+
         #endregion
 
         #region 获取全部文章信息（编号[从大到小]）
@@ -145,11 +165,24 @@ namespace DAL
         /// <returns></returns>
         public static int DeleteArticle(Article obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Delect_Article", CommandType.StoredProcedure, new SqlParameter[] {
+            int n = DBHelper.ExecuteNonQuery("Delete_Article", CommandType.StoredProcedure, new SqlParameter[] {
                 new SqlParameter("@A_No",obj.A_No)
             });
             return n;
-        } 
+        }
         #endregion
+
+        #region 删除多条文章数据
+        /// <summary>
+        /// 删除文章数据
+        /// </summary>
+        /// <returns></returns>
+        public static int DeleteArticleMore(string MoreNo)
+        {
+            int n = DBHelper.ExecuteNonQuery("Delete from Article where A_No in ("+ MoreNo + ")", CommandType.Text);
+            return n;
+        }
+        #endregion
+
     }
 }

@@ -91,5 +91,17 @@ namespace BLL
             return Article_Service.DeleteArticle(obj);
         }
         #endregion
+
+        #region 删除多条文章数据
+        /// <summary>
+        /// 删除文章数据
+        /// </summary>
+        /// <returns></returns>
+        public static int DeleteArticleMore(string MoreNo)
+        {
+            return Article_Service.DeleteArticleMore(MoreNo); 
+        }
+        #endregion
+
     }
 }

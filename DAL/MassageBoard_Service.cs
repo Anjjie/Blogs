@@ -111,7 +111,7 @@ namespace DAL
         /// <returns></returns>
         public static int DeleteMassageBoard(MassageBoard obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Update_MassageBoard", CommandType.StoredProcedure,
+            int n = DBHelper.ExecuteNonQuery("Delete_MassageBoard", CommandType.StoredProcedure,
                 new SqlParameter[] {
                      new SqlParameter("@Mb_No",obj.Mb_No)
                 });

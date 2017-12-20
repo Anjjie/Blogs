@@ -103,7 +103,7 @@ namespace DAL
         /// <returns></returns>
         public static int DeleteAduit(Aduit obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Delect_Aduit", CommandType.StoredProcedure, new SqlParameter[] {
+            int n = DBHelper.ExecuteNonQuery("Delete_Aduit", CommandType.StoredProcedure, new SqlParameter[] {
                 new SqlParameter("@Aduit_No",obj.Aduit_No)
             });
             return n;

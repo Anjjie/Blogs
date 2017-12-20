@@ -84,7 +84,7 @@ namespace DAL
         /// <returns></returns>
         public static int UpdateArticleType(ArticleType obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Insert_ArticleType", CommandType.StoredProcedure,
+            int n = DBHelper.ExecuteNonQuery("Update_ArticleType", CommandType.StoredProcedure,
                 new SqlParameter[] {
                     new SqlParameter("@At_Name",obj.At_Name),
                     new SqlParameter("@At_No",obj.At_No)
@@ -99,7 +99,7 @@ namespace DAL
         /// <returns></returns>
         public static int DeleteArticleType(ArticleType obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Insert_ArticleType", CommandType.StoredProcedure,
+            int n = DBHelper.ExecuteNonQuery("Delete_ArticleType", CommandType.StoredProcedure,
                 new SqlParameter[] {
                     new SqlParameter("@At_No",obj.At_No)
                 });

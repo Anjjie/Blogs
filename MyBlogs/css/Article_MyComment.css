@@ -1,0 +1,118 @@
+﻿*{
+    padding:0;
+    margin:0;
+}
+body{
+    border:0px solid;
+    height:100%;
+    width:99%;
+    margin-left:10px;
+}
+.divTopTitle{
+    width:100%;
+    height:40px;
+    line-height:40px;
+    background-color:rgba(16, 109, 248, 0.53);
+    color:#ffffff;
+    font-size:20px;
+}
+.divNav{
+    height:30px;
+}
+.divFind{
+    margin-top:4px;
+    float:right;
+    width:300px;
+    height:70%;
+    border:1px solid #d2d2d2;
+    transition:border 2s;
+}
+.divFind:hover{
+     border:1px solid #0066ff;
+}
+.divFind>div{
+    float:left;
+    height:100%;
+    
+}
+.divNav>a{
+    vertical-align:middle;
+    text-decoration:none;
+    color:#ff0000;
+}
+.divNav>a:hover{
+    color:rgba(236, 75, 0, 0.47);
+}
+.divFindText{
+    width:80%
+}
+#txtFindContent{
+    border:0;
+    outline-style:none;
+    padding-left:5px;
+}
+.divFindBtn{
+    user-select:none;
+    -ms-user-select:none;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+
+    transition:color 1s;
+    cursor:pointer;
+    text-align:center;
+    color:#ffffff;
+    width:20%;
+    height:20px;
+    background-color:#d2d2d2;
+    
+}
+.divFindBtn:hover{
+    color:#000000;
+}
+.ulContent_Title{
+    list-style-type:none;
+     height:30px;
+}
+.ulContent_Title>li{
+    text-align:center;
+    height:30px;
+    line-height:30px;
+    float:left;
+    width:20%;
+    background-color:rgba(86, 86, 86, 0.14);
+    border-bottom:1px solid;
+}
+.ulContent_Content{
+   width:100%;
+   height:35px;
+   cursor:pointer;
+}
+.ulContent_Content:hover{
+    background-color:#d2d2d2;
+}
+.ulContent_Content>li{
+    float:left;
+    overflow:hidden;
+    height:34px;
+    line-height:30px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    text-align:center;
+    width:20%;
+    border-bottom:1px solid #d2d2d2;
+    font-size:10pt;
+}
+.ulContent_Botton{
+    -ms-user-select:none;
+    user-select:none;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+
+    list-style-type:none;
+    line-height:60px;
+
+   width:100%;
+   height:30px;
+   border:0px solid;
+   text-align:center;
+}

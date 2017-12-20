@@ -85,7 +85,7 @@ namespace DAL
         /// <returns></returns>
         public static int UpdateIssue_library(Issue_library obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Insert_Issue_library", CommandType.StoredProcedure,
+            int n = DBHelper.ExecuteNonQuery("Update_Issue_library", CommandType.StoredProcedure,
                 new SqlParameter[] {
                     new SqlParameter("@IssueI_Name",obj.IssueI_Name),
                     new SqlParameter("@IssueI_No",obj.IssueI_No)
@@ -100,7 +100,7 @@ namespace DAL
         /// <returns></returns>
         public static int DeleteIssue_library(Issue_library obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Insert_Issue_library", CommandType.StoredProcedure,
+            int n = DBHelper.ExecuteNonQuery("Delete_Issue_library", CommandType.StoredProcedure,
                 new SqlParameter[] {
                    new SqlParameter("@IssueI_No",obj.IssueI_No)
                 });

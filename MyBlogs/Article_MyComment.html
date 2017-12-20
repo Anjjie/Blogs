@@ -4,14 +4,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 	<meta charset="utf-8" />
+
+    <script src="JQ_File/jquery-3.2.1.min.js"></script>
+    <script src="js/Article_MyComment.js"></script>
+    <link href="css/Article_MyComment.css" rel="stylesheet" />
+
+    <script>
+        $(function () {
+            LoadInfo();
+        });
+    </script>
+
 </head>
 <body>
-    <div class="divTopTitle">我的评论</div>
-    <div>
-        <div>文章</div>
-        <div>作者</div>
-        <div>内容</div>
-        <div>时间</div>
+    <div class="divTopTitle"> ❃ 我的评论</div>
+    <div class="divBottonContent">
+        <div class="divNav">
+            <a id="aNewArticle" href="javascript:;">最近文章</a>
+            <a id="aHotArticle" href="javascript:;">热门文章</a>
+            <!-- 查询框 -->
+           <div class="divFind">
+               <div class="divFindText">
+                   <input id="txtFindContent" value="" placeholder="根据文章标题查询信息" />
+               </div>
+               <div class="divFindBtn">搜索</div>
+           </div>
+        </div>
+        <div id="divContent">
+            
+        </div>
     </div>
 </body>
 </html>

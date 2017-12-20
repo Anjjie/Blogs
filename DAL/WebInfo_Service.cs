@@ -112,7 +112,7 @@ namespace DAL
         /// <returns></returns>
         public static int DeleteWebInfo(WebInfo obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Delect_WebInfo", CommandType.StoredProcedure,
+            int n = DBHelper.ExecuteNonQuery("Delete_WebInfo", CommandType.StoredProcedure,
                 new SqlParameter[] {
                    new SqlParameter("@Web_No",obj.Web_No)
                 });

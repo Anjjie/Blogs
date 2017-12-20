@@ -4,8 +4,101 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 	<meta charset="utf-8" />
+
+    <link href="css/Article_Manager.css" rel="stylesheet" />
+
+    <script src="js/Article_Manager.js"></script>
+
+    <script src="JQ_File/jquery-3.2.1.min.js"></script>
+
+    <script>
+        $(function () {
+            AddHintInfo();
+            LoadData();
+            showTopNavMore();
+            showli_IdAuthorClickNum();
+           
+        });
+    </script>
+
 </head>
 <body>
-    文章管理
+    <!-- 标题、查询、排序功能 -->
+    <div class="divTop">
+        <div class="divtopTitle"> ❃ 文章管理</div>
+        <a id="atopNav" href="javascript:;" style="color:#ffffff;text-decoration:none;">
+            <div class="divtopNav">
+                ▶&nbsp;更多
+            </div>
+        </a>
+    </div>
+    <div>
+        <div class="divNavMore">
+            <ul class="ulNavMore">
+                <li id="liDelectSel" style="display:none;">
+                    <a href="javascript:;" style="text-decoration:none;color:red;" id="aDelectSel" title="[一键删除] 只删除已经打钩的信息">一键删除</a>
+                </li>
+                <li>
+                    显示列：
+                    <input id="chkAll_Nav" type="checkbox" value="全选" />全选
+                    <input id="chkSel_Nav" type="checkbox" value="选项" />选项
+                    <input id="chkId" type="checkbox" value="编号" />编号
+                    <input id="chkAuthor"  type="checkbox" value="作者" />作者
+                    <input id="chkClickNum"  type="checkbox" value="浏览数" />浏览数
+                </li>
+                <li>
+                   
+                </li>
+            </ul>
+           
+        </div>
+    </div>
+    <!-- 内容，详细，编辑，删除 -->
+    <div class="divBottom">
+       <ul class="ulContent_Title">
+           <li class="liSelect">
+               <input type="checkbox" id="chkSel_All" value="全选"  />全选
+           </li>
+           <li class="liId">编号</li>
+           <li class="liTitle">&nbsp;标题</li>
+           <li class="liAuthor">作者</li>
+           <!--<li class="liArticleContent">内容</li>-->
+           <li class="liArticleType">类型</li>
+           <li class="liArticleTime">时间</li>
+           <li class="liClickNum">浏览数</li>
+           <li class="liComm" >操作</li>
+       </ul>
+       <div id="divContent">
+            <!--<ul class="ulContent_Content">
+                <li class="liSelect">
+                    <input type="checkbox" id="chkSel" value="" />
+                </li>
+                <li class="liId">编号</li>
+                <li class="liTitle">标题xxxxxxxsssssssxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxssssssssssssssssssssssssssssssxxxxxxxxxxxxxxxxxxxxxxxx</li>
+                <li class="liAuthor">作者</li>
+                <li class="liArticleContent">内容xxxxssssssxxxxxxxxxxxxxxxxxxsssssssssxxsssssssssssssssxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
+                <li class="liArticleType">xxxxxxxxxxxxxx</li>
+                <li class="liArticleTime">时间</li>
+                <li class="liClickNum">浏览数</li>
+                <li class="liComm">
+                    <a href="javascript:;">编辑</a>
+                    <a href="javascript:;">删除</a>
+                    <a href="javascript:;">查看</a>
+                </li>
+            </ul>-->
+        </div>
+       <div class="divContentBottom">
+            <ul class="ulContent_Botton">
+                <li>
+                   <a href="javascript:;">首页</a>&nbsp;&nbsp;
+                   <a href="javascript:;">上一页</a>&nbsp;&nbsp;
+                   <a href="javascript:;">下一页</a>&nbsp;&nbsp;
+                   <a href="javascript:;">尾页</a>
+                </li>
+            </ul>
+       </div>
+    </div>
+
+    
 </body>
 </html>

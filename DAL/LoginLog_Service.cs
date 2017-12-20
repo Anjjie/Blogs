@@ -132,7 +132,7 @@ namespace DAL
         /// <returns></returns>
         public static int UpdateLoginLog(LoginLog obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Insert_LoginLog", CommandType.StoredProcedure,
+            int n = DBHelper.ExecuteNonQuery("Update_LoginLog", CommandType.StoredProcedure,
                 new SqlParameter[] {
                     new SqlParameter("@Log_City",obj.Log_City),
                     new SqlParameter("@Log_Country",obj.Log_Country),
@@ -152,7 +152,7 @@ namespace DAL
         /// <returns></returns>
         public static int DeleteLoginLog(LoginLog obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Insert_LoginLog", CommandType.StoredProcedure,
+            int n = DBHelper.ExecuteNonQuery("Delete_LoginLog", CommandType.StoredProcedure,
                 new SqlParameter[] {
                    new SqlParameter("@Log_No",obj.Log_No)
                 });

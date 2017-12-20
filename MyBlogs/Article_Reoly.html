@@ -4,8 +4,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 	<meta charset="utf-8" />
+    <link href="css/Article_MyComment.css" rel="stylesheet" />
+
+    <script src="JQ_File/jquery-3.2.1.min.js"></script>
+    <script src="js/Article_Reoly.js"></script>
+
+    <script>
+        $(function () {
+            LoadInfo();
+        });
+    </script>
+
 </head>
 <body>
-    我的回复
+    <div class="divTopTitle"> ❃ 我的回复</div>
+    <div class="divBottonContent">
+        <div class="divNav">
+            <!-- 查询框 -->
+            <div class="divFind">
+                <div class="divFindText">
+                    <input id="txtFindContent" value="" placeholder="根据文章标题查询信息" />
+                </div>
+                <div class="divFindBtn">搜索</div>
+            </div>
+        </div>
+        <div id="divContent">
+
+        </div>
+    </div>
 </body>
 </html>

@@ -94,7 +94,6 @@ function LoadUserInfo() {
                                 $a.eq(3).html("更改");
                                
                             } else {
-                                alert(222);
                                 $lbHint.eq(3).html("未设置");
                                 $a.eq(3).html("设置");
                             }

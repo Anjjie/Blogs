@@ -120,7 +120,7 @@ namespace DAL
         /// <returns></returns>
         public static int DeleteComment(Comment obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Delect_Comment", CommandType.StoredProcedure,
+            int n = DBHelper.ExecuteNonQuery("Delete_Comment", CommandType.StoredProcedure,
                 new SqlParameter[] {
                     new SqlParameter("@Com_Content",obj.Com_No)
                 });

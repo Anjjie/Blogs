@@ -1,0 +1,167 @@
+﻿*{
+    padding:0;
+    margin:0;
+}
+body{
+    width:98%;
+    height:100%;
+    margin-left:10px;
+    margin-top:5px;
+    box-shadow:0 2px 5px #000000;
+    border-radius:10px;
+}
+.divTop{
+    width:98%;
+    height:40px;
+    background-color:rgba(16, 109, 248, 0.53);
+    color:#ffffff;
+    font-size:15pt;
+    line-height:40px;
+    padding-left:2%;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+
+    -ms-user-select:none;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+    user-select:none;
+
+
+}
+.divtopTitle{
+    float:left;
+}
+
+.divtopNav{
+    float:right;
+    margin-right:20px;
+    font-size:12pt;
+    cursor:pointer;
+}
+.divtopNav:hover{
+     text-shadow:0 0 2px #ffffff;
+ }
+
+.divNavMore{
+    display:none;
+    width:96%;
+    height:40px;
+    border:0px solid;
+    background-color:#ffffff;
+    line-height:40px;
+    position:absolute;
+    font-size:12pt;
+    font-family:"宋体";
+    padding-left:2%;
+}
+.ulNavMore>li{
+    float:left;
+    list-style-type:none;
+    margin-right:20px;
+}
+.divBottom{
+    width:100%;
+    height:640px;
+    background-color:#ffffff;
+
+}
+.ulContent_Title{
+
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -webkit-user-select:none;
+    user-select:none;
+
+    width:100%;
+    height:30px;
+    color:#777575;
+    background-color:#ebebeb;
+    display:table;
+    border-bottom:1.5px solid #dadada;
+}
+.liId,.liAuthor,.liClickNum{
+    display:none;
+}
+
+.ulContent_Title>li{
+    display:table-cell;
+   
+    vertical-align:middle;
+    font-weight:600;
+    font-size:10pt;
+    font-family:"宋体";
+}
+.ulContent_Content{
+     -moz-user-select:none;
+    -ms-user-select:none;
+    -webkit-user-select:none;
+    user-select:none;
+
+    cursor:pointer;
+
+    width:100%;
+    height:40px;
+    border-bottom:0.5px solid rgba(125, 125, 125, 0.35);
+    background-color:#ffffff;
+    display:table;
+}
+.ulContent_Content>li{
+
+
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+
+    max-width:30px;
+
+    display:table-cell;
+    
+    vertical-align:middle;
+    font-size:11pt;
+    font-family:"宋体";
+
+    /*border-bottom:1px  solid #c6c6c6;*/
+}
+.ulContent_Content:hover{
+    background-color:rgba(235, 235, 235, 0.30);
+}
+.liSelect{
+    padding-left:1%;
+    width:4%;
+}
+.liId{
+    width:5%;
+}
+.liTitle{
+    width:25%;
+     text-align:left;
+}
+.liAuthor{
+    width:5%;
+}
+.liArticleContent{
+    width:25%;
+}
+.liArticleType{
+    width:5%;
+    text-align:center;
+}
+.liArticleTime{
+    width:13%;
+    text-align:center;
+}
+.liClickNum{
+    width:5%;
+    text-align:center;
+}
+.liComm{
+    width:8%;
+    text-align:center;
+}
+.divContentBottom{
+    display:none;
+    text-align:center;
+    vertical-align:middle;
+    height:40px;
+    line-height:40px;
+}

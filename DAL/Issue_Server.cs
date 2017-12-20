@@ -123,7 +123,7 @@ namespace DAL
         /// <returns></returns>
         public static int DeleteIssue(Issue obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Insert_Issue", CommandType.StoredProcedure,
+            int n = DBHelper.ExecuteNonQuery("Delete_Issue", CommandType.StoredProcedure,
                 new SqlParameter[] {
                    new SqlParameter("@Issue_No",obj.Issue_No)
                 });

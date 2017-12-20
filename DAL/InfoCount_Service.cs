@@ -99,7 +99,7 @@ namespace DAL
         /// <returns></returns>
         public static int DeleteInfoCount(InfoCount obj)
         {
-            int n = DBHelper.ExecuteNonQuery("Delect_InfoCount", CommandType.StoredProcedure,
+            int n = DBHelper.ExecuteNonQuery("Delete_InfoCount", CommandType.StoredProcedure,
                 new SqlParameter[] {
                     new SqlParameter("@A_No",obj.A_No)
                 });

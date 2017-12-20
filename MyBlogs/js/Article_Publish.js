@@ -33,9 +33,11 @@ function One_table_AddUrl_Click() {
     var $txtUrl = $("#txtUrl");
     var $txtUrlTitle = $("#txtUrlTitle");
     var $btnUrlReset = $("#btnUrlReset");
+    var $One_a_AddUrl = $("#One_a_AddUrl");
 
     var click = 1;
-    $One_table_AddUrl.click(function () {
+    
+    /*$One_a_AddUrl.click(function () {
         if (click!=1) {
             $Background_AddUrl.hide();
             $One_table_AddUrl.removeClass("backgroundColor");
@@ -45,6 +47,18 @@ function One_table_AddUrl_Click() {
         $Background_AddUrl.show();
         $One_table_AddUrl.addClass("backgroundColor");
         click++;
+    });*/
+
+    $One_a_AddUrl.focus(function () {
+        $Background_AddUrl.show();
+        $One_table_AddUrl.addClass("backgroundColor");
+        return;
+    });
+
+    $One_a_AddUrl.blur(function () {
+        $Background_AddUrl.hide();
+        $One_table_AddUrl.removeClass("backgroundColor");
+        return;
     });
 
     $btnUrlOk.click(function () {
@@ -261,20 +275,36 @@ function One_table_AddImage_click() {
     var $One_table_AddImage = $(".One_table_AddImage");
     var $Background_AddImage = $(".Background_AddImage");
 
-    var click = 1;
+    var $One_a_AddImage = $("#One_a_AddImage");
 
-    $One_table_AddImage.click(function () {
-        if (click==1) {
-            $One_table_AddImage.addClass("backgroundColor");
-            $Background_AddImage.show();
-            click++;
-        } else {
-            $One_table_AddImage.removeClass("backgroundColor");
-            $Background_AddImage.hide();
-            click--;
-        }
-       
+    $One_a_AddImage.focus(function () {
+        $One_table_AddImage.addClass("backgroundColor");
+        $Background_AddImage.show();
+        
     });
+
+    $One_a_AddImage.blur(function () {
+        $One_table_AddImage.removeClass("backgroundColor");
+        $Background_AddImage.hide();
+    });
+
+
+    //var click = 1;
+
+    //$One_table_AddImage.click(function () {
+    //    if (click==1) {
+    //        $One_table_AddImage.addClass("backgroundColor");
+    //        $Background_AddImage.show();
+    //        click++;
+    //    } else {
+    //        $One_table_AddImage.removeClass("backgroundColor");
+    //        $Background_AddImage.hide();
+    //        click--;
+    //    }
+       
+    //});
+
+
    
 }
 
