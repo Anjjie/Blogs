@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+
+    <link href="css/Front/commonality.css" rel="stylesheet" />
+    <link href="css/Front/Front_AboutMe.css" rel="stylesheet" />
+
+    <script src="js/Front/commonality.js"></script>
+    <script src="JQ_File/jquery-3.2.1.min.js"></script>
+    <script src="js/Front/Front_AboutMe.js"></script>
+
+    <script>
+        $(function () {
+            $(".canvasYear").css("width","100%");
+            NavClick();
+        });
+    </script>
+
+</head>
+<body>
+    <div class='divBackground'></div>
+    <div class='div1024_background'>
+        <!-- LOGO -->
+        <div class='divLogo'><label class='logoName'>XLong</label><label class='logoBlogs'> - Blogs</label></div>
+        <!-- 导航：首页、关于我、学无止境、日常记事、留言版 -->
+        <nav class='nav'>
+            <ul>
+                <li class="nav_Click">首页</li>
+                <li class="nav_Click">关于我</li>
+                <li class="nav_Click">学无止境</li>
+                <li class="nav_Click">日常记事</li>
+                <li class="nav_Click">留言版</li>
+            </ul>
+        </nav>
+
+        <div class='content_background'>
+            <div class='content_background1' id='AddContent_Div'>
+               <div class="divImage">
+                   
+               </div>
+               <div class="divYear">
+                  <canvas class="canvasYear"></canvas>
+                   <ul>
+                       <li>
+                           <div class="endInt">步入.Net</div>
+                           <div class="yuanYear"><div class="yuanYears"></div> </div>
+                           <span style="position:absolute;color:#ffffff;">2016</span>
+                       </li>
+                       <li>
+                           <div class="endInt">步入前端</div>
+                           <div class="yuanYear"><div class="yuanYears"></div> </div>
+                           <span style="position:absolute;color:#ffffff;">2017</span>
+                       </li>
+                       <li>
+                           <div class="endInt">创建博客</div>
+                           <div class="yuanYear"><div class="yuanYears"></div> </div>
+                           <span style="position:absolute;color:#ffffff;">2018-1-12</span>
+                       </li>
+                   </ul>
+               </div>
+               <div class="divIntroduce">
+                    <div class="divAboutMeTitle"><div style="background-color:#ffffff;width:5%;height:100%;float:left;"></div>
+                    <div class="divAboutMeTitles">介 绍 我</div></div>
+                    <div class="divAboutMeContent">
+                        <label id="myAboutContent" style="word-break:break-word;">
+                            石小龙，男，一个热爱编程的90后！16年9月高考结束后来到南方IT学院报了.Net专业。在此期间，通过自己的努力学习和对编程的热爱，掌握了编程的思想、语言、逻辑等知识。每天除了学习就是做一些实战项目来提升自我的能力。2017年12月兴趣班开班，而我报了前端开发，也就是我正式步入前端的时候。在开发过我常用的开发工具及语言是Visual Studio、PS、HBuilder、SQL Server、C#、asp.net、web等......
+                            <br /><br />
+                            在校期间，我要感谢三个人以及一个集体和团队。首先要感谢的是我的老师。他讲课的认真、详细、负责任，给我带来了许多知识与许多在学校期间学习不到的宝贵知识。第二感谢我的班主任，她严厉的对我们的出勤进行监督、对我们学习的关怀，使我们这些刚来到这座学校的同学留下温暖的回忆。第三个是自己，感谢自己的努力与热爱。
+                            还有一个集体也就是班级，感谢他们每一个人对我的友好。在一个就是我在这个学校中的团队了。
+                            <br /><br />
+                            个人微信：Anjjiewx (加好友备注：博客)
+                            <br /><br />
+                            QQ：1078933133 (加好友备注：博客)
+                            <br /><br />
+                            邮箱：Anjjiewm@163.com | 1078933133@qq.com
+                            
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='divBottom'>
+            <!--关于-->
+            <p>
+                <a href="#">关于作者</a> |
+                <a href="#">意见反馈</a> |
+                <a href="mailto:Anjjiewm@163.com">发送163邮箱</a>
+            </p>
+            <!--版权声明-->
+            <p>
+                版权所有，保留一切权利！ © 2017 XLong博客
+            </p>
+            <!--联系方式-->
+            <p>
+                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1078933133&site=qq&menu=yes">QQ：1078933133</a>
+                &nbsp;&nbsp;&nbsp;E-Mail:1078933133@qq.com
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>

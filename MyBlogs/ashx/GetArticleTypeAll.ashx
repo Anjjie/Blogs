@@ -4,6 +4,7 @@ using System;
 using System.Web;
 
 using System.Collections.Generic;
+using System.Runtime.Serialization.Json;
 using Models;
 using BLL;
 
@@ -14,12 +15,21 @@ public class GetArticleTypeAll : IHttpHandler {
         //context.Response.Write("Hello World");
 
         List<ArticleType> list = ArticleType_Manager.GetAllArticleType();
-        var option = "<option value='===请选择文章类型==='>===请选择文章类型===</option>";
-        foreach (ArticleType obj in list)
+
+        if (context.Request["comType"]=="1")
         {
-            option += "<option value='"+obj.At_No+"'>"+obj.At_Name+"</option>";
+            DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(List<ArticleType>));
+            dcjs.WriteObject(context.Response.OutputStream,list);
         }
-        context.Response.Write(option);
+        else
+        {
+            var option = "<option value='===请选择文章类型==='>===请选择文章类型===</option>";
+            foreach (ArticleType obj in list)
+            {
+                option += "<option value='"+obj.At_No+"'>"+obj.At_Name+"</option>";
+            }
+            context.Response.Write(option);
+        }
     }
 
     public bool IsReusable {

@@ -71,8 +71,8 @@ namespace DAL
         public static List<Article> GetArticleAllByDesc()
         {
             List<Article> list = new List<Article>();
-            SqlDataReader dr = DBHelper.ExecuteReader("Select_ArticleAllByDesc", CommandType.StoredProcedure);
-            while (dr.Read())
+            DataSet ds = DBHelper.GetDataSet("Select_ArticleAllByDesc", CommandType.StoredProcedure);
+            foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 Article article = new Article()
                 {
@@ -85,10 +85,42 @@ namespace DAL
                 };
                 list.Add(article);
             }
-            dr.Close();
-            DBHelper.CloseCon();
             return list;
         }
+        #endregion
+
+        #region 分页查询文章信息
+        /// <summary>
+        /// 分页查询文章信息
+        /// </summary>
+        /// <param name="pageNo">当前页编号</param>
+        /// <param name="pageSize">每页显示数</param>
+        /// <returns></returns>
+        public static List<Article> GetArticlePaging(int pageNo, int pageSize)
+        {
+            List<Article> list = new List<Article>();
+
+            DataSet ds = DBHelper.GetDataSet("Select_ArticlePaging", CommandType.StoredProcedure,
+                new SqlParameter[] {
+                    new SqlParameter("@pageNo",pageNo),
+                    new SqlParameter("@pageSize",pageSize)
+                });
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Article obj = new Article()
+                {
+                    A_Author = dr["A_Author"].ToString(),
+                    A_Content = dr["A_Content"].ToString(),
+                    A_DateTime = dr["A_DateTime"].ToString(),
+                    A_No = Convert.ToInt32(dr["A_No"]),
+                    A_Title = dr["A_Title"].ToString(),
+                    A_TypeName = dr["A_TypeName"].ToString()
+                };
+                list.Add(obj);
+            }
+            return list;
+        } 
         #endregion
 
         #region 根据条件查询文章信息

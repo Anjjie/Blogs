@@ -1,0 +1,6 @@
+﻿.divArticleType{width:100%;height:50px;display:flex;align-items:center;}
+.divArticleType_Button{width:10%;height:80%;background-color:rgba(139, 139, 139, 0.86);display:flex;align-items:center;justify-content:center;font-size:11pt;color:#ffffff;border-radius:5px;box-shadow:0 0 5px #ffffff;cursor:pointer;margin-right:5%;}
+.divArticleType_Button:hover{background-color:#008bff;}
+#iframe_Type{width:100%;border:0px solid;}
+
+.body{padding:0;margin:0; width:100%;height:100%;}

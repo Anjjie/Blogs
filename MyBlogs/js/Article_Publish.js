@@ -55,11 +55,11 @@ function One_table_AddUrl_Click() {
         return;
     });
 
-    $One_a_AddUrl.blur(function () {
-        $Background_AddUrl.hide();
-        $One_table_AddUrl.removeClass("backgroundColor");
-        return;
-    });
+    //$One_a_AddUrl.blur(function () {
+    //    $Background_AddUrl.hide();
+    //    $One_table_AddUrl.removeClass("backgroundColor");
+    //    return;
+    //});
 
     $btnUrlOk.click(function () {
         $Background_AddUrl.hide();

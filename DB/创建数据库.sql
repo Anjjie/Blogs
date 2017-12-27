@@ -7,7 +7,7 @@ CREATE DATABASE MyBlogsDB
 ON
 (
 	NAME='MyBlogsDB',
-	FILENAME='D:\学习资料\南方IT学院兴趣班_前端开发\石小龙 - 个人项目（前端）\DB\MyBlogsDB.mdf'
+	FILENAME='D:\学习资料\兴趣班\石小龙 - 个人项目（前端）\MyBlogs_System\DB\MyBlogsDB.mdf'
 )
 GO
 

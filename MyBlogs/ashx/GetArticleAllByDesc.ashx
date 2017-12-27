@@ -12,7 +12,7 @@ public class GetArticleAllByDesc : IHttpHandler {
     
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
-         List<Article> list = Article_Manager.GetArticleAllByDesc();
+        List<Article> list = Article_Manager.GetArticleAllByDesc();
         DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(List<Article>));
         dcjs.WriteObject(context.Response.OutputStream,list);
     }

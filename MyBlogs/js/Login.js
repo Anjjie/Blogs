@@ -45,6 +45,7 @@ function GetVerifyCode() {
                         return;
                     }
                     alert("内测手机验证码：" + date);
+                    $("#txtVerifyCode").val(date);
                     $liHint.html("发送成功!");
                     CheckCode = date;
                     saveFunction = setInterval(function () {

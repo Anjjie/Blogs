@@ -47,6 +47,25 @@ namespace BLL
         }
         #endregion
 
+        #region 分页查询文章信息
+        /// <summary>
+        /// 分页查询文章信息
+        /// </summary>
+        /// <param name="pageNo">当前页编号</param>
+        /// <param name="pageSize">每页显示数</param>
+        /// <returns></returns>
+        public static List<Article> GetArticlePaging(int pageNo, int pageSize)
+        {
+            List<Article> list = new List<Article>();
+            foreach (Article obj in Article_Service.GetArticlePaging(pageNo, pageSize))
+            {
+                obj.GetArticleType = ArticleType_Manager.GetArticleTypeByConn("At_Name", obj.A_TypeName);
+                list.Add(obj);
+            }
+            return list;
+        }
+        #endregion
+
         #region 根据条件查询文章信息
         /// <summary>
         /// 根据条件查询文章信息

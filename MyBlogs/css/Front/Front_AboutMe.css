@@ -1,0 +1,89 @@
+﻿.divImage,.divYear,.divIntroduce{
+    width:95%;
+    position:relative;
+    left:50%;
+    margin-left:-47.5%;
+    margin-bottom:20px;
+}
+.divImage{
+    height:200px;
+    background-image:url('../../images/Front/AboutMe.jpg');
+    background-repeat:round;
+}
+.divYear{
+    height:110px;
+    border:1px solid transparent;
+}
+.divYear>ul{
+    width:100%;
+    height:20px;
+    margin-top:65px;
+    display:table;
+}
+.divYear>ul>li{
+    height:100%;
+    display:table-cell;
+    padding-left:50px;
+    vertical-align:middle;
+}
+.yuanYear{
+    width:20px;
+    height:20px;
+    border:1px solid #ffffff;
+    border-radius:20px;
+    background-color:#ffffff;
+}
+.yuanYears{
+    position:relative;
+    width:15px;
+    height:15px;
+    border-radius:14px;
+    left:50%;
+    margin-left:-8px;
+    top:50%;
+    margin-top:-8px;
+    background-color:cadetblue;
+}
+.canvasYear {
+    width: 0%;
+    height: 5px;
+    position: absolute;
+    margin-top: 73px;
+    transition: width 5s;
+    background-color: #ffffff;
+}
+.endInt {
+    position: absolute;
+    margin-top: -30px;
+    color: #ffffff;
+}
+
+.divIntroduce{
+    margin-top:50px;
+    height:400px;
+}
+.divAboutMeTitle{
+    width:150px;
+    height:40px;
+    box-shadow:1px 1px 3px #000000;
+    border-top-right-radius:50px;
+    border-bottom-right-radius:50px;
+}
+.divAboutMeTitles{
+    width:75%;
+    height:100%;
+    background-color:#00AEAE;
+    color:#ffffff;
+    padding-left:20%;
+    display:flex;
+    align-items:center;
+    font-size:14pt;
+    border-top-right-radius:50px;
+    border-bottom-right-radius:50px;
+}
+.divAboutMeContent{
+    margin-top:20px;
+    color:#ffffff;
+    font-family:"宋体";
+    font-size:12pt;
+}
