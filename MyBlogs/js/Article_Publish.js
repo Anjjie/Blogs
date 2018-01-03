@@ -1,15 +1,29 @@
 ﻿/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
 
-function CloseHint() {
-
+function CloseHint(a) {
     window.onbeforeunload = function () {
-            if ( $("#txtTitle").val()!="") {
+        if (a == 0) {
+            if ($("#txtTitle").val() != "") {
                 return "确定要离开吗？离开后当前输入的数据见清除掉！";
-            } else if ($("#Content_iframe").contents().find("body").html()!="") {
+            } else if ($("#Content_iframe").contents().find("body").html() != "") {
+                return "确定要离开吗？离开后当前输入的数据见清除掉！";
+            } else if ($("#divCoverImage").data("url") != "0") {
+                setTimeout(function () {
+                    alert("暂时获取取消操作");
+                    //var data = { "coverImageUrl": $("#divCoverImage").data("url") }
+                    //$.ajax({
+                    //    type: "get",
+                    //    url: "ashx/LeaveDeleteArticleImage.ashx",
+                    //    data: data,
+                    //    success: function (ret) {
+
+                    //    }
+                    //});
+                }, 50);
                 return "确定要离开吗？离开后当前输入的数据见清除掉！";
             }
+        } 
     }
-   
 }
 
 function GetColor() {
@@ -120,8 +134,8 @@ function unlink() {
     editors("unlink", true, null);
 };
 
-function insertImage(url) {
-    editors("insertImage", true, url);
+function InsertImage(url) {
+    editors("InsertImage", true, url);
 }
 
 function formatBlock(block) {
@@ -177,7 +191,7 @@ function btnUp_Click() {
 
                     //创建XMLHttpRequest对象
                     var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("POST", "../ashx/upFile.ashx?name=" + name );
+                    xmlHttp.open("POST", "../ashx/upFile.ashx?name=" + name + "&&cover=1");
                     
                     //进度条
                     xmlHttp.upload.addEventListener("progress", upFileProgress, false);
@@ -188,8 +202,9 @@ function btnUp_Click() {
                             $Background_AddImage.fadeOut(1000);
                             $(".One_table_AddImage").removeClass("backgroundColor");
                             eval("var ret=" + xmlHttp.responseText);
-                            var url = "../images/SaveImage/" + name + "/" + ret.fileName;
-                            insertImage(url);
+                           
+                            var url = "../images/SaveImage/"+ ret.fileName;
+                            InsertImage(url);
                             $btnUp.attr("title", "未选择图片");
                             $selFile.val("");
                         } else {
@@ -277,32 +292,21 @@ function One_table_AddImage_click() {
 
     var $One_a_AddImage = $("#One_a_AddImage");
 
-    $One_a_AddImage.focus(function () {
-        $One_table_AddImage.addClass("backgroundColor");
-        $Background_AddImage.show();
-        
-    });
 
-    $One_a_AddImage.blur(function () {
-        $One_table_AddImage.removeClass("backgroundColor");
-        $Background_AddImage.hide();
-    });
+    var click = 1;
 
-
-    //var click = 1;
-
-    //$One_table_AddImage.click(function () {
-    //    if (click==1) {
-    //        $One_table_AddImage.addClass("backgroundColor");
-    //        $Background_AddImage.show();
-    //        click++;
-    //    } else {
-    //        $One_table_AddImage.removeClass("backgroundColor");
-    //        $Background_AddImage.hide();
-    //        click--;
-    //    }
+    $One_table_AddImage.click(function () {
+        if (click==1) {
+            $One_table_AddImage.addClass("backgroundColor");
+            $Background_AddImage.show();
+            click++;
+        } else {
+            $One_table_AddImage.removeClass("backgroundColor");
+            $Background_AddImage.hide();
+            click--;
+        }
        
-    //});
+    });
 
 
    
@@ -432,6 +436,139 @@ function Load_setType() {
         success: function (ret) {
             $("#setType").html(ret);
         }
+    });
+}
+
+function btnCoverImage_up() {
+    var $btnCoverImage_up = $("#btnCoverImage_up");
+    var $selCoverImage = $("#selCoverImage");
+
+    $btnCoverImage_up.click(function () {
+        $selCoverImage.click();
+    });
+
+    $selCoverImage.change(function () {
+        var filename = $selCoverImage.val().split('\\');
+        //filename = filename[0].split('/');
+        //获取后缀名
+        var fname = filename[filename.length - 1];
+        var suffix = fname.split('.');
+        suffix = suffix[suffix.length - 1];
+        //获取登录名
+        var name = $(location).attr("href").split('=')[1];
+        
+        switch (suffix) {
+            case "jpg":
+            case "jpeg":
+            case "png":
+                $btnCoverImage_up.attr("title", fname);
+               
+                //判断当前浏览器是否能使用
+                if (window.FormData) {
+                    //创建FormData表单对象
+                    var formData = new FormData();
+                   
+                    //获取文件添加进去
+                    formData.append("upfile", document.getElementById("selCoverImage").files[0]);
+
+                    //创建XMLHttpRequest对象
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open("POST", "../ashx/upFile.ashx?name=" + name + "&&cover=cover");
+                   
+                    //是否上传成功
+                    xmlHttp.onload = function () {
+                        if (xmlHttp.status == 200) {
+                            eval("var ret=" + xmlHttp.responseText);
+                            console.log(ret.fileName);
+                            $("#divCoverImage").data("url", ret.fileName);
+                            console.log("封面成功！");
+                        } else {
+                            console.log("封面失败！");
+                        }
+                    };
+                    xmlHttp.send(formData);
+                }
+
+                previewImage();
+
+                break;
+            default:
+                $selFile.val("");
+                alert("选择文件有误，请重新选择！");
+                break;
+        }
+
+    });
+
+    function previewImage() {
+        // 检查是否支持FileReader对象：预览图片
+        if (typeof FileReader != 'undefined') {
+
+            var acceptedTypes = {
+                'image/png': true,
+                'image/jpeg': true,
+                'image/gif': true
+            };
+
+            //预览图片
+            if (acceptedTypes[document.getElementById('selCoverImage').files[0].type] === true) {
+
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    var image = new Image();
+                    image.src = event.target.result;
+                    image.width = 90;
+                    //document.body.appendChild(image);
+                    $("#divCoverImage").html(image);
+                };
+                reader.readAsDataURL(document.getElementById('selCoverImage').files[0]);
+
+            }
+        } else {
+            alert("对不起，不支持预览!");
+        }
+    }
+
+}
+
+function btnSend_click() {
+   
+    var $lbSend_Hint = $("#lbSend_Hint");
+    $("#btnSend").click(function () {
+        var title = $("#txtTitle").val();
+        var content = $("#Content_iframe").contents().find("body").html();
+        var name = $(location).attr("href").split('=')[1];
+        var articleType = $("#setType").val();
+        var coverImageUrl = $("#divCoverImage").data("url");
+        if (articleType == "===请选择文章类型===") {
+            $lbSend_Hint.html("请选择文章类型信息，再进行发布！");
+            return;
+        }
+        if (coverImageUrl=="0") {
+            $lbSend_Hint.html("请选择封面展示图片！");
+            return;
+        }
+        var data = {
+            "title": title,
+            "content": content,
+            "ID": name,
+            "articleType": articleType,
+            "coverImageUrl": coverImageUrl
+        };
+        $.ajax({
+            type: "get",
+            url: "../ashx/AddArticle.ashx",
+            data: data,
+            success: function (ret) {
+                if (ret=="1") {
+                    alert("发布成功！");
+                    CloseHint(1);
+                    window.location.reload();//刷新当前页面.
+                } else {
+                    $lbSend_Hint.html("发布失败！");
+                }
+            }
+        });
     });
 }
 

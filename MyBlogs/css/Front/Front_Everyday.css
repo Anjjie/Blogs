@@ -1,0 +1,30 @@
+﻿.divEveydayTitle{user-select:none;-webkit-user-select:none;-moz-user-select:none; background-color:#008B8B;border-top-right-radius:300px;border-top-left-radius:300px; color:#ffffff;font-size:15pt; width:200px;height:50px;display:flex;justify-content:center;align-items:center;margin-left:30px;}
+#AddContent_Div>ul{width:100%;display:table;}
+#AddContent_Div>ul>li{display:table-cell;}
+.divEveydayTitle_Signature{text-align:right;vertical-align:bottom;padding-right:20px;color:cadetblue;font-size:14pt;}
+.divEvarydayContent{ width:95%; margin-left:2.5%;display:table;margin-top:20px;}
+.divEvarydayContent>div{float:left;}
+.EvarydayLeft{width:20%;border-right:2px solid #808000;transition:height 5s;}
+.EvarydayRight{width:79.7%;}
+.EvarydayContent_Data{height:200px;width:100%;margin-bottom:10px;margin-top:10px;text-align:right;}
+.yuanYear-Evaryday{width:20px;height:20px;background-color:#808000;border-radius:20px;position:absolute;margin-left:17.30%;}
+.yuanYear-Evaryday_hover{box-shadow:0 0 5px #808000;}
+.yuanYear-Evaryday>div{width:14px;height:14px;background-color:#ffffff;border-radius:20px;margin-left:2.8px;margin-top:3px;box-shadow:0 0 5px #ffffff;}
+.divYearMonth{width:70%;margin-left:20%;position:relative;color:#20B2AA;cursor:pointer;}
+.divYearMonth_hover{color:#ffffff;text-shadow:-4px 4px 5px rgba(141, 141, 141, 0.98);}
+.pYear{font-size:20pt;}
+.pMonthDay{font-size:15pt;}
+.background-Content{width:92%;height:90%;margin-left:5%;background-color:rgba(255, 255, 255, 1);padding-left:3%; text-align:left;cursor:pointer;}
+.background-Content_hover{background-color:#ffffff ;box-shadow:2px 5px 10px rgba(141, 141, 141, 0.98);}
+.divTriangle{border-width:15px;border-style:solid;border-color:transparent rgba(255, 255, 255, 1) transparent transparent;position:absolute;transform:rotate(15deg);margin-left:-4.69%;}
+.left-ContentImage{width:30%;height:90%;padding-top:1.25%;padding-bottom:1.25%;float:left;}
+#divImage{width:93%;height:100%;border:1px solid;display:flex;align-items:center;justify-content:center;background-repeat:round;}
+.right-ContentInfo{width:68%;height:90%;padding-top:1.25%;padding-bottom:1.25%;float:left;padding-right:2%;}
+.right-ContentInfo>ul{width:100%;height:100%;}
+    .right-ContentInfo > ul > li {max-width:500px;overflow:hidden;text-overflow:ellipsis;}
+.liTitle{height:20%;white-space:nowrap;font-size:13pt;display:flex;align-items:center;font-weight:600;}
+.liType{height:15%; white-space:nowrap;font-size:10pt;color:rgba(141, 141, 141, 0.98)}
+.liContent{height:62%;word-break:break-word;color:rgba(141, 141, 141, 0.98)}
+.divLoadMore{width:100%;height:30px;display:flex;justify-content:center;align-items:center;}
+#btnLoadMore{margin-left:220px; height:100%;width:50%;outline-style:none;}
+

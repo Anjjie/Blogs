@@ -43,7 +43,7 @@ function isNotHide_SkipPageBtn(bool, UpNextType) {
 
 }
 
-function LoadData() {
+function LoadData_All() {
     var $content_Data = $("#content_Data");
     var data = {
         "type": "front",
@@ -66,10 +66,20 @@ function LoadData() {
             }
             $("#divPageNo").html(a);
 
+            if (retData[1]==1) {
+                $("#PageBackground").hide();
+            }
             $content_Data.html(retData[2]);
             isNotHide_SkipPageBtn(true, "up");
             PageAutoOneselfAdd();
+            left_DataInfo_click();
         }
+    });
+}
+
+function left_DataInfo_click() {
+    $(".left_DataInfo").click(function () {
+        window.open("../ReadArticle.html?n=" + $(".title").eq($(this).index(".left_DataInfo")).data("no"), "top");
     });
 }
 
@@ -79,7 +89,12 @@ function PageAutoOneselfAdd() {
     var aPageNo = $("a[name='PageNo']");
     aPageNo.click(function () {
         var no = $(this).html();
-        GetPageInfoData(no);
+        if ($("#txtContent").val()!="") {
+            GetPageInfoData(false,no);
+        } else {
+            GetPageInfoData(true, no);
+        }
+        
         $("#pageNo").html(no);
 
         var clickPageNo = $(this).html();
@@ -102,7 +117,6 @@ function PageAutoOneselfAdd() {
                     $("a[name='PageNo']").not(aPageNo.eq(2)).css("color", "#000000");
                     for (var i = 0; i < count; i++) {
                         var pageNo = Number(aPageNo.eq(i).html()) - 1;
-                        console.log(pageNo);
                         aPageNo.eq(i).html(pageNo)
                     }
                 } 
@@ -191,7 +205,11 @@ function SkipPageBtn_Cleck() {
         isNotHide_SkipPageBtn(true, "up");
         $("a[name='PageNo']").eq(0).css("color", "#ffffff");
         $("a[name='PageNo']").not($("a[name='PageNo']").eq(0)).css("color", "#000000");
-        GetPageInfoData(1);
+        if ($("#txtContent").val() !== "") {
+            GetPageInfoData(false, 1);
+        } else {
+            GetPageInfoData(true, 1);
+        }
         $pageNo.html(1);
     });
 
@@ -207,7 +225,11 @@ function SkipPageBtn_Cleck() {
         } else if (no < parseInt($("#pageCount").html())) {
             isNotHide_SkipPageBtn(false, "");
         }
-        GetPageInfoData(no);
+        if ($("#txtContent").val() !== "") {
+            GetPageInfoData(false, no);
+        } else {
+            GetPageInfoData(true, no);
+        }
         
     });
 
@@ -225,7 +247,11 @@ function SkipPageBtn_Cleck() {
         }
         $("a[name='PageNo']").eq(no - 1).css("color", "#ffffff");
         $("a[name='PageNo']").not($("a[name='PageNo']").eq(no - 1)).css("color", "#000000");
-        GetPageInfoData(no);
+        if ($("#txtContent").val() !== "") {
+            GetPageInfoData(false, no);
+        } else {
+            GetPageInfoData(true, no);
+        }
         $pageNo.html(no);
     });
 
@@ -237,32 +263,98 @@ function SkipPageBtn_Cleck() {
         isNotHide_SkipPageBtn(false, "up");
         var pageCount = parseInt($("#pageCount").html());
         $pageNo.html($("#pageCount").html());
-        GetPageInfoData($("#pageCount").html());
+        if ($("#txtContent").val() !== "") {
+            GetPageInfoData(false, $("#pageCount").html());
+        } else {
+            GetPageInfoData(true, $("#pageCount").html());
+        }
         $("a[name='PageNo']").eq(parseInt($("#pageCount").html()) - 1).css("color", "#ffffff");
         $("a[name='PageNo']").not($("a[name='PageNo']").eq(parseInt($("#pageCount").html()) - 1)).css("color", "#000000");
     });
 
 }
 
-function GetPageInfoData(pageNo) {
+function GetPageInfoData(isFind, pageNo) {
     var $content_Data = $("#content_Data");
-    var data = {
-        "type": "front",
-        "pageNo": pageNo
-    }
-    
-    $.ajax({
-        type: "get",
-        data: data,
-        url: "../../ashx/GetArticlePaging.ashx",
-        success: function (ret) {
-            var retData = ret.split('&&');
-            if (retData.length != 3)
-                return;
-            $("#pageCount").html(retData[1]);
-            $("#ArticleCount").html(retData[0]);
-            $content_Data.html(retData[2]);
-            //PageAutoOneselfAdd();
+    if (isFind == false) {
+        var data = {
+            "type": "front",
+            "pageNo": pageNo
         }
+        $.ajax({
+            type: "get",
+            data: data,
+            url: "../../ashx/GetArticlePaging.ashx",
+            success: function (ret) {
+                var retData = ret.split('&&');
+                if (retData.length != 3)
+                    return;
+                $("#pageCount").html(retData[1]);
+                $("#ArticleCount").html(retData[0]);
+                $content_Data.html(retData[2]);
+                //PageAutoOneselfAdd();
+            }
+        });
+    } else {
+        var data = {
+            "findContent": $("#txtContent").val(),
+            "pageNo": pageNo
+        }
+        $.ajax({
+            type: "get",
+            data: data,
+            url: "../../ashx/Select_ArticleDescPagingByConn.ashx",
+            success: function (ret) {
+                var retData = ret.split('&&');
+                if (retData.length != 3)
+                    return;
+                $("#pageCount").html(retData[1]);
+                $("#ArticleCount").html(retData[0]);
+                alert(retData[2]);
+                $content_Data.html(retData[2]);
+                left_DataInfo_click();
+            }
+        });
+
+    }
+}
+
+function btnFile_click() {
+    $("#btnFile").click(function () {
+        
+        var data = {
+            "findContent": $("#txtContent").val(),
+            "pageNo": "1"
+        }
+        $.ajax({
+            type: "get",
+            data: data,
+            url: "../../ashx/Select_ArticleDescPagingByConn.ashx",
+            success: function (ret) {
+                var retData = ret.split('&&');
+                if (retData.length != 3)
+                    return;
+                $("#pageCount").html(retData[1]);
+                $("#ArticleCount").html(retData[0]);
+                var a = "";
+                for (var i = 0; i < retData[1]; i++) {
+                    var no = (i + 1);
+                    a += '<a class="aPageNo" name="PageNo" href="#body">' + no + '</a>';
+                }
+
+                $("#divPageNo").html(a);
+                
+                if (retData[1] == 1) {
+                    $("#PageBackground").hide();
+                } else {
+                    $("#PageBackground").show();
+                }
+                $("#content_Data").html(retData[2]);
+                isNotHide_SkipPageBtn(true, "up");
+                PageAutoOneselfAdd();
+            }
+        });
     });
 }
+
+

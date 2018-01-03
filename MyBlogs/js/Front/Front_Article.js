@@ -8,11 +8,23 @@ function LoadTypeInfo() {
         type: "get",
         success: function (retData) {
             var datas = $.parseJSON(retData);
-            var divType = "";
+            var divType = '<div class="divArticleType_Button" >全部</div>';
             $.each(datas, function (i, obj) {
-                divType += ' <div class="divArticleType_Button" data-no="'+obj.At_No+'">' + obj.At_Name+ '</div>';
+                if (obj.At_Name=="日常") {
+                    
+                } else {
+                    divType += '<div class="divArticleType_Button" data-no="' + obj.At_No + '">' + obj.At_Name + '</div>';
+                }
             });
             $divArticleType.html(divType);
+            divArticleType_Button_Click();
         }
+    });
+}
+
+function divArticleType_Button_Click() {
+    $(".divArticleType_Button").click(function () {
+        var urlName = ["Front_ArticleAll", "Front_ArticleTechnology", "Front_Articlejournalism", "Front_ArticleFiiNote"];
+        $("#iframe_Type").attr("src", "../../" + urlName[$(this).index()] + ".html");
     });
 }

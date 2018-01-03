@@ -276,7 +276,11 @@ function LoadData(index,pageNo) {
                 $("#lbPageNo").html(1);
                 $("#LastPage").hide();
             }
+           
             $("#lbPageCount").html(retData[1]);
+            if ($("#lbPageCount").html() == "1") {
+                $(".ulContent_Botton").css("display", "none");
+            }
             $divContent.html(retData[2]);
             if (index == 0) {
                 hideli_IdAuthorClickNum("hide", "");

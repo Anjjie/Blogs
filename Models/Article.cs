@@ -39,5 +39,10 @@ namespace Models
         /// 文章作者
         /// </summary>
         public string A_Author { get; set; }
+        /// <summary>
+        /// 封面图片
+        /// </summary>
+        public string A_CoverImageUrl { get; set; }
+
     }
 }

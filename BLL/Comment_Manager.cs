@@ -37,12 +37,16 @@ namespace BLL
         /// <param name="demandType">查询类型（实体类中的所有属性选其一）</param>
         /// <param name="demandContent">查询参数（要查询的条件参数）</param>
         /// <returns></returns>
-        public static Comment GetCommentByConn(string demandType, string demandContent)
+        public static List<Comment> GetCommentByConn(string demandType, string demandContent)
         {
-            Comment obj= Comment_Service.GetCommentByConn(demandType, demandContent);
-            obj.GetAduit = Aduit_Manager.GetAduitByConn("Aduit_No", obj.Aduit_No + "");
-            obj.GetArticle = Article_Manager.GetArticleByConn("A_No", obj.A_No + "");
-            return obj;
+            List<Comment> list = new List<Comment>();
+            foreach (Comment obj in Comment_Service.GetCommentByConn(demandType, demandContent))
+            {
+                obj.GetAduit = Aduit_Manager.GetAduitByConn("Aduit_No", obj.Aduit_No + "");
+                obj.GetArticle = Article_Manager.GetArticleByConn("A_No", obj.A_No + "");
+                list.Add(obj);
+            }
+            return list;
         }
         #endregion
         #region 添加评价数据

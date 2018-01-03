@@ -98,7 +98,6 @@ function btnLogin_Click() {
                         } else {
                             setLog($txtLoginName.val());
                             CheckCode = "我的博客与后台登录！";
-                           
                         }
                     }
                 });

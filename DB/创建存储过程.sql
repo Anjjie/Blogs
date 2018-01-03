@@ -128,10 +128,11 @@ GO
 	@A_Content NVARCHAR(400),				--内容
 	@A_TypeName NVARCHAR(20),				--文章类型
 	@A_DateTime NVARCHAR(50),				--发表时间
-	@A_Author NVARCHAR(100)					--作者
+	@A_Author NVARCHAR(100),					--作者
+	@A_CoverImageUrl Nvarchar(2000)			 --封面图片
 	AS
 	Insert Into Article
-	VALUES(@A_Title,@A_Content,@A_TypeName,@A_DateTime,@A_Author)
+	VALUES(@A_Title,@A_Content,@A_TypeName,@A_DateTime,@A_Author,@A_CoverImageUrl)
 GO
 
 --修改
@@ -144,9 +145,10 @@ GO
 	@A_Content NVARCHAR(400),				--内容
 	@A_TypeName NVARCHAR(20),				--文章类型
 	@A_DateTime NVARCHAR(50),				--发表时间
-	@A_Author NVARCHAR(100)					--作者
+	@A_Author NVARCHAR(100),				--作者
+	@A_CoverImageUrl Nvarchar(2000)		    --封面图片
 	AS
-	Update Article Set A_Title=@A_Title,A_Content=@A_Content,A_TypeName=@A_TypeName,A_DateTime=@A_DateTime,A_Author=@A_Author WHERE A_No=@A_No
+	Update Article Set A_Title=@A_Title,A_Content=@A_Content,A_TypeName=@A_TypeName,A_DateTime=@A_DateTime,A_Author=@A_Author,A_CoverImageUrl=@A_CoverImageUrl WHERE A_No=@A_No
 GO
 
 --删除

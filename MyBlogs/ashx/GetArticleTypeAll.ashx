@@ -26,7 +26,7 @@ public class GetArticleTypeAll : IHttpHandler {
             var option = "<option value='===请选择文章类型==='>===请选择文章类型===</option>";
             foreach (ArticleType obj in list)
             {
-                option += "<option value='"+obj.At_No+"'>"+obj.At_Name+"</option>";
+                option += "<option value='"+obj.At_Name+"'>"+obj.At_Name+"</option>";
             }
             context.Response.Write(option);
         }

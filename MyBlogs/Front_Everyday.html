@@ -5,13 +5,17 @@
     <title></title>
 	<meta charset="utf-8" />
     <link href="css/Front/commonality.css" rel="stylesheet" />
+    <link href="css/Front/Front_Everyday.css" rel="stylesheet" />
 
     <script src="js/Front/commonality.js"></script>
     <script src="JQ_File/jquery-3.2.1.min.js"></script>
+    <script src="js/Front/Front_Everyday.js"></script>
 
     <script>
         $(function () {
             NavClick();
+            LoadData();
+            LoadMoreData();
         });
     </script>
 
@@ -34,7 +38,51 @@
 
         <div class='content_background'>
             <div class='content_background1' id='AddContent_Div'>
-                日常记事
+                <ul >
+                    <li><div class="divEveydayTitle">日常记事</div><div></div> </li>
+                    <li class="divEveydayTitle_Signature" >点点滴滴都是回忆，记录日常点滴！</li>
+                </ul>
+                <hr style="border:1px solid cadetblue;box-shadow:0 2px 5px  cadetblue;margin-bottom:20px;" />
+                <div style="height:250px;width:95%;margin-left:2.5%;background-image:url(images/Front/richang.jpg);background-repeat:round;"></div>
+                
+                <div class="divEvarydayContent">
+                    
+                    <div class="EvarydayLeft">
+
+                        <div class="EvarydayContent_Data">
+                            <div class="yuanYear-Evaryday"><div></div></div>
+                            <div class="divYearMonth">
+                                <p class="pYear">2017</p>
+                                <p class="pMonthDay">02-03</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="EvarydayRight">
+
+                        <div class="EvarydayContent_Data" name="divEvarydayContent_Data">
+                            <div class="background-Content">
+                                <div class="divTriangle"></div>
+                                <div class="left-ContentImage">
+                                    <div id="divImage">图片</div>
+                                </div>
+                                <div class="right-ContentInfo">
+                                    <ul>
+                                        <li id="liTitle">标题</li>
+                                        <li id="liType">类型</li>
+                                        <li id="liContent">内容</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+                <div class="divLoadMore">
+                    <input type="button" value="加载更多" id="btnLoadMore" />
+                </div>
             </div>
         </div>
 

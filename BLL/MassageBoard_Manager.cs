@@ -36,11 +36,15 @@ namespace BLL
         /// <param name="demandType">查询类型（实体类中的所有属性选其一）</param>
         /// <param name="demandContent">查询参数（要查询的条件参数）</param>
         /// <returns></returns>
-        public static MassageBoard GetMassageBoardByConn(string demandType, string demandContent)
+        public static List<MassageBoard> GetMassageBoardByConn(string demandType, string demandContent)
         {
-            MassageBoard obj = MassageBoard_Service.GetMassageBoardByConn(demandType, demandContent);
-            obj.GetAduit = Aduit_Manager.GetAduitByConn("Aduit_No", obj.Aduit_No + "");
-            return obj;
+            List<MassageBoard> list = new List<MassageBoard>();
+            foreach (MassageBoard obj in MassageBoard_Service.GetMassageBoardByConn(demandType, demandContent))
+            {
+                obj.GetAduit = Aduit_Manager.GetAduitByConn("Aduit_No", obj.Aduit_No + "");
+                list.Add(obj);
+            }
+            return list;
         }
         #endregion
         #region 添加留言数据

@@ -17,6 +17,10 @@ namespace Models
         /// </summary>
         public int Mb_No { get; set; }
         /// <summary>
+        /// 留言昵称
+        /// </summary>
+        public string Mb_NickName { get; set; }
+        /// <summary>
         /// 留言内容
         /// </summary>
         public string Mb_Content { get; set; }

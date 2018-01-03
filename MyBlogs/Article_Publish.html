@@ -19,7 +19,7 @@
     <script>
         
         $(function () {
-            CloseHint();
+            CloseHint(0);
             var explorers = window.navigator.userAgent;
 
             if (explorers.indexOf('Firefox') >= 0) {
@@ -27,18 +27,20 @@
             } else {
                 Load_setType();
                 $("#One_table_FontColorId").colpick();
-                GetColor();
+                GetColor(); 
                 One_table_AddUrl_Click();
                 btnUp_Click();
                 One_table_AddImage_click();
                 Load_Paragraph_Click();
                 Load_setFamily_Click();
                 Load_setFontSize_Click();
+                btnCoverImage_up();
+                btnSend_click();
             }
         });
     </script>
 </head>
-<body>
+<body onunload=" onclose()">
     <div id="all">
        <ul>
            <li id="publishArticle_Title">
@@ -372,12 +374,10 @@
                              </tr>
                              <tr>
                                  <td style="border:0px solid #808080;border-top:0;height:470px;">
-                                    <iframe id="Content_iframe" contenteditable="true" >
-                                    </iframe> 
+                                    <iframe id="Content_iframe" contenteditable="true" ></iframe> 
                                      <script>
                                          //document.getElementById("Content_iframe").contentWindow.document.designMode = "on";
                                         
-
                                          var explorer=window.navigator.userAgent;
 
                                          if (explorer.indexOf('Firefox')>=0) {
@@ -414,11 +414,18 @@
                     <option>请选择</option>
                </select>
            </li>
+           <li style="padding-top:10px;" >
+               上传封面图片
+              <div class="divCoverImage" id="divCoverImage" data-url="0">预览</div>
+               <input type="file" id="selCoverImage" hidden />
+               <input type="button" id="btnCoverImage_up"  value="选择图片并上传"/>
+           </li>
            <li id="Article_Send">
              <label id="lbSend_Hint">提示:发布按钮单击函数没有做！</label>
              <input id="btnSend" type="button" value="发布"  /> 
            </li>
        </ul>
+        <input type="button" id="btnDelete" value="删除" />
     </div>
 </body>
 </html>

@@ -23,7 +23,7 @@ namespace BLL
             List<Reply> list = new List<Reply>();
             foreach (Reply obj in Reply_Service.GetAllReply())
             {
-                obj.GetComment = Comment_Manager.GetCommentByConn("Com_No", obj.Com_No+"");
+                obj.GetComment = Comment_Manager.GetCommentByConn("Com_No", obj.Com_No+"")[0];
                 list.Add(obj);
             }
             return list;
@@ -39,7 +39,7 @@ namespace BLL
         public static Reply GetReplyByConn(string demandType, string demandContent)
         {
             Reply obj = Reply_Service.GetReplyByConn(demandType, demandContent);
-            obj.GetComment = Comment_Manager.GetCommentByConn("Com_No", obj.Com_No + "");
+            obj.GetComment = Comment_Manager.GetCommentByConn("Com_No", obj.Com_No + "")[0];
             return obj;
         }
         #endregion

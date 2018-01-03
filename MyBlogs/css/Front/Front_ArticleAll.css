@@ -14,7 +14,7 @@ li{list-style-type:none;}
 .divHotInfo:hover{color:#000000;}
 .left_DataInfo{cursor:pointer; width:100%;background-color:rgba(255, 255, 255, 0.69); height:200px;transition:box-shadow 0.5s;margin-bottom:20px;display:flex;align-items:center;}
 .left_DataInfo:hover{box-shadow:0 3px 10px rgba(255, 255, 255, 0.86);}
-.divImage{width:30%;height:80%;margin-left:20px;}
+.divImage{width:30%;height:80%;margin-left:20px;background-repeat:round;}
 .divDataContent{width:63%;height:80%;}
 .title,.typeDate,.content{width:100%;overflow:hidden;}
 .title{height:20%;font-size:14pt;white-space:nowrap; text-overflow:ellipsis; }

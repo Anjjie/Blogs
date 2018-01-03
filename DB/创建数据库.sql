@@ -55,7 +55,8 @@ CREATE TABLE Article
 	A_Content NVARCHAR(400) NOT NULL,				--内容
 	A_TypeName NVARCHAR(20) NOT NULL,				--文章类型
 	A_DateTime NVARCHAR(50) NOT NULL,				--发表时间
-	A_Author NVARCHAR(100) NOT NULL					--作者
+	A_Author NVARCHAR(100) NOT NULL,				--作者
+	A_CoverImageUrl Nvarchar(2000) Not null         --封面图片
 )
 GO
 

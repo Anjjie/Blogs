@@ -5,10 +5,75 @@
     <title></title>
 	<meta charset="utf-8" />
     
+    <link href="css/Front/Front_ArticleAll.css" rel="stylesheet" />
+    <link href="css/Front/Front_Article.css" rel="stylesheet" />
+    <script src="js/Front/Front_ArticleTechnology.js"></script>
+    <script src="JQ_File/jquery-3.2.1.min.js"></script>
 
+    <script>
+        $(function () {
+            LoadData();
+            SkipPageBtn_Cleck();
+            btnFile_click();
+        });
+    </script>
 
 </head>
-<body>
-   
+<body id="body">
+    <div id="divHeightAll" style="height:100%;">
+        <div class="left" >
+            <div style="margin-bottom:10px;color:#ffffff;">总页数:<label id="pageCount">10</label>
+                &nbsp;&nbsp;|&nbsp;&nbsp;当前页:<label id="pageNo">1</label>
+                &nbsp;&nbsp;|&nbsp;&nbsp;文章数：<label id="ArticleCount">100</label>
+            </div>
+            <div id="content_Data">
+                <div class="left_DataInfo">
+                    <div class="divImage">介绍图</div>
+                    <div class="divDataContent">
+                        <div class="title">你好呢，这是标题@！</div>
+                        <div class="typeDate">类型  时间</div>
+                        <div class="content">你好呢，这是内容</div>
+                    </div>
+                </div>
+            </div>
+           
+           
+            <div id="PageBackground">
+                <a class="aPageNo" id="PageIndex" href="#body" title="第一页"><<</a>
+                <a class="aPageNo" id="UpPage" href="#body" title="上一页" ><</a>
+                <div id="divPageNo"></div>
+                <a class="aPageNo" id="NextPage"  href="#body" title="下一页">></a>
+                <a class="aPageNo" id="LastPage" href="#body" title="最后一页">>></a>
+                <div><input type="text" id="txtFindPageNo" value="" placeholder="GO" title="请输入跳转页" /></div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="divFind">
+                <div class="divFind_content">
+                    <div class="divTextBox">
+                        <input id="txtContent" type="text" value="" placeholder="请输入查询信息" />
+                    </div>
+                    <div class="divButton" id="btnFile">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="divHot">
+                <div class="divHotRecommend">热门推荐</div>
+                <div id="divHotInfo">
+                    <div class="divHotInfo">2017年最火的编程语言排行榜！</div>
+                    <div class="divHotInfo">2018年是一个全新的生活，加油吧！小伙子</div>
+                    <div class="divHotInfo">你有什么话想对自己说！</div>
+                    <div class="divHotInfo">不是(你学不会写标题)而是(你没用好知音体!)</div>
+                    <div class="divHotInfo">在不增加(人员)的情况下推广(公司网站) 的5个方法</div>
+                    <div class="divHotInfo">关于(微信推广的10个技巧)你可能还不知道!</div>
+                    <div class="divHotInfo">(和漂亮妹纸谈恋爱)是一种怎样的体验?</div>
+                    <div class="divHotInfo">这些事情做到了，想(不会运营/SEO)都难!</div>
+                    <div class="divHotInfo">盘点（互联网）发生的（10件）大事！</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

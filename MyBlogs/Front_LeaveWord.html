@@ -6,13 +6,17 @@
 	<meta charset="utf-8" />
 
     <link href="css/Front/commonality.css" rel="stylesheet" />
-
+    <link href="css/Front/Front_Everyday.css" rel="stylesheet" />
+    <link href="css/Front/Front_LeaveWord.css" rel="stylesheet" />
     <script src="js/Front/commonality.js"></script>
     <script src="JQ_File/jquery-3.2.1.min.js"></script>
+    <script src="js/Front/Front_LeaveWord.js"></script>
 
     <script>
         $(function () {
             NavClick();
+            LoadLeaveWordInfo();
+            btnSend_Cleck();
         });
     </script>
 
@@ -35,7 +39,34 @@
 
         <div class='content_background'>
             <div class='content_background1' id='AddContent_Div'>
-                留言版
+                <ul>
+                    <li><div class="divEveydayTitle">留言版</div><div></div> </li>
+                    <li class="divEveydayTitle_Signature">留下您的宝贵意见...</li>
+                </ul>
+                <hr style="border:1px solid cadetblue;box-shadow:0 2px 5px  cadetblue;margin-bottom:20px;" />
+                <div style="width:95%;margin-left:2.5%;">
+                    <div class="divLevaeWord_Background">
+                        <textarea id="txtLevaeWordContent" style="width:100%;height:100%;"></textarea>
+                    </div>
+                    <div class="divNickName">
+                        <input type="text" id="txtNickName" value=""  placeholder="请输入您的留言昵称"/>
+                    </div>
+                    <div class="divBtnSend">
+                        <input type="button" id="btnSend" value="确定留言" />
+                    </div>
+                    <hr style="margin-top:20px;" />
+                    <div id="divLeaveWordContent">
+
+                        <div class="LeaveWordContent_Background">
+                            <div class="NickNameDate">
+                                <label class="lbNickName">张三</label>
+                                <label class="lbDateTime">2017-12-21 20:20:20</label>
+                            </div>
+                            <div class="content"></div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
 

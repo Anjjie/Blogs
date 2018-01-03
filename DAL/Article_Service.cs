@@ -54,7 +54,8 @@ namespace DAL
                     A_DateTime = dr["A_DateTime"].ToString(),
                     A_No = Convert.ToInt32(dr["A_No"]),
                     A_Title = dr["A_Title"].ToString(),
-                    A_TypeName = dr["A_TypeName"].ToString()
+                    A_TypeName = dr["A_TypeName"].ToString(),
+                    A_CoverImageUrl = dr["A_CoverImageUrl"].ToString()
                 };
                 list.Add(article);
             }
@@ -81,7 +82,8 @@ namespace DAL
                     A_DateTime = dr["A_DateTime"].ToString(),
                     A_No = Convert.ToInt32(dr["A_No"]),
                     A_Title = dr["A_Title"].ToString(),
-                    A_TypeName = dr["A_TypeName"].ToString()
+                    A_TypeName = dr["A_TypeName"].ToString(),
+                    A_CoverImageUrl = dr["A_CoverImageUrl"].ToString()
                 };
                 list.Add(article);
             }
@@ -115,12 +117,49 @@ namespace DAL
                     A_DateTime = dr["A_DateTime"].ToString(),
                     A_No = Convert.ToInt32(dr["A_No"]),
                     A_Title = dr["A_Title"].ToString(),
-                    A_TypeName = dr["A_TypeName"].ToString()
+                    A_TypeName = dr["A_TypeName"].ToString(),
+                    A_CoverImageUrl = dr["A_CoverImageUrl"].ToString()
                 };
                 list.Add(obj);
             }
             return list;
-        } 
+        }
+        #endregion
+
+        #region 分页查询文章信息：条件
+        /// <summary>
+        /// 分页查询文章信息：条件
+        /// </summary>
+        /// <param name="pageNo">当前页编号</param>
+        /// <param name="pageSize">每页显示数</param>
+        /// <returns></returns>
+        public static List<Article> GetArticlePagingByConn(int pageNo, int pageSize,string conn)
+        {
+            List<Article> list = new List<Article>();
+
+            DataSet ds = DBHelper.GetDataSet("Select_ArticlePagingByConn", CommandType.StoredProcedure,
+                new SqlParameter[] {
+                     new SqlParameter("@Conn",conn),
+                    new SqlParameter("@pageNo",pageNo),
+                    new SqlParameter("@pageSize",pageSize)
+                });
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Article obj = new Article()
+                {
+                    A_Author = dr["A_Author"].ToString(),
+                    A_Content = dr["A_Content"].ToString(),
+                    A_DateTime = dr["A_DateTime"].ToString(),
+                    A_No = Convert.ToInt32(dr["A_No"]),
+                    A_Title = dr["A_Title"].ToString(),
+                    A_TypeName = dr["A_TypeName"].ToString(),
+                    A_CoverImageUrl = dr["A_CoverImageUrl"].ToString()
+                };
+                list.Add(obj);
+            }
+            return list;
+        }
         #endregion
 
         #region 根据条件查询文章信息
@@ -144,12 +183,115 @@ namespace DAL
                     A_DateTime = dr["A_DateTime"].ToString(),
                     A_No = Convert.ToInt32(dr["A_No"]),
                     A_Title = dr["A_Title"].ToString(),
-                    A_TypeName = dr["A_TypeName"].ToString()
+                    A_TypeName = dr["A_TypeName"].ToString(),
+                    A_CoverImageUrl = dr["A_CoverImageUrl"].ToString()
                 };
             }
             dr.Close();
             DBHelper.CloseCon();
             return article;
+        }
+        #endregion
+
+        #region 根据条件查询文章信息:多条
+        /// <summary>
+        /// 根据条件查询文章信息:多条
+        /// </summary>
+        /// <returns></returns>
+        public static List<Article> GetArticleByConns(string demandType, string demandContent)
+        {
+            List<Article> list = new List<Article>();
+            string sql = "Select * from Article where " + demandType + " = @" + demandType;
+            Article article = new Article();
+            SqlDataReader dr = DBHelper.ExecuteReader(sql, CommandType.Text, new SqlParameter[] {
+                new SqlParameter("@" + demandType,demandContent)
+            });
+            while(dr.Read())
+            {
+                article = new Article()
+                {
+                    A_Author = dr["A_Author"].ToString(),
+                    A_Content = dr["A_Content"].ToString(),
+                    A_DateTime = dr["A_DateTime"].ToString(),
+                    A_No = Convert.ToInt32(dr["A_No"]),
+                    A_Title = dr["A_Title"].ToString(),
+                    A_TypeName = dr["A_TypeName"].ToString(),
+                    A_CoverImageUrl = dr["A_CoverImageUrl"].ToString()
+                };
+                list.Add(article);
+            }
+            dr.Close();
+            DBHelper.CloseCon();
+            
+            return list;
+        }
+        #endregion
+
+        #region 分页显示：全部相关查询列条件
+        /// <summary>
+        /// 分页显示：全部相关查询列条件
+        /// </summary>
+        /// <param name="pageNo">当前页编号</param>
+        /// <param name="pageSize">每页显示数</param>
+        /// <returns></returns>
+        public static List<Article> Select_ArticleDescPagingByConn(int pageNo, int pageSize, string conn)
+        {
+            List<Article> list = new List<Article>();
+
+            DataSet ds = DBHelper.GetDataSet("Select_ArticleDescPagingByConn", CommandType.StoredProcedure,
+                new SqlParameter[] {
+                     new SqlParameter("@Conn","%"+conn+"%"),
+                      new SqlParameter("@pageNo",pageNo),
+                    new SqlParameter("@pageSize",pageSize)
+                });
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Article obj = new Article()
+                {
+                    A_Author = dr["A_Author"].ToString(),
+                    A_Content = dr["A_Content"].ToString(),
+                    A_DateTime = dr["A_DateTime"].ToString(),
+                    A_No = Convert.ToInt32(dr["A_No"]),
+                    A_Title = dr["A_Title"].ToString(),
+                    A_TypeName = dr["A_TypeName"].ToString(),
+                    A_CoverImageUrl = dr["A_CoverImageUrl"].ToString()
+                };
+                list.Add(obj);
+            }
+            return list;
+        }
+        #endregion
+
+        #region 显示全部：全部相关查询列条件
+        /// <summary>
+        /// 显示全部：全部相关查询列条件
+        /// </summary>
+        /// <returns></returns>
+        public static List<Article> Select_ArticleDescCorrelationByConn(string conn)
+        {
+            List<Article> list = new List<Article>();
+
+            DataSet ds = DBHelper.GetDataSet("Select_ArticleDescCorrelationByConn", CommandType.StoredProcedure,
+                new SqlParameter[] {
+                     new SqlParameter("@Conn","%"+conn+"%")
+                });
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Article obj = new Article()
+                {
+                    A_Author = dr["A_Author"].ToString(),
+                    A_Content = dr["A_Content"].ToString(),
+                    A_DateTime = dr["A_DateTime"].ToString(),
+                    A_No = Convert.ToInt32(dr["A_No"]),
+                    A_Title = dr["A_Title"].ToString(),
+                    A_TypeName = dr["A_TypeName"].ToString(),
+                    A_CoverImageUrl = dr["A_CoverImageUrl"].ToString()
+                };
+                list.Add(obj);
+            }
+            return list;
         }
         #endregion
 
@@ -165,7 +307,8 @@ namespace DAL
                 new SqlParameter("@A_Content",obj.A_Content),
                 new SqlParameter("@A_DateTime",obj.A_DateTime),
                 new SqlParameter("@A_Title",obj.A_Title),
-                new SqlParameter("@A_TypeName",obj.A_TypeName)
+                new SqlParameter("@A_TypeName",obj.A_TypeName),
+                 new SqlParameter("@A_CoverImageUrl",obj.A_CoverImageUrl)
             });
             return n;
         }
@@ -184,7 +327,8 @@ namespace DAL
                 new SqlParameter("@A_DateTime",obj.A_DateTime),
                 new SqlParameter("@A_Title",obj.A_Title),
                 new SqlParameter("@A_TypeName",obj.A_TypeName),
-                new SqlParameter("@A_No",obj.A_No)
+                new SqlParameter("@A_No",obj.A_No),
+                 new SqlParameter("@A_CoverImageUrl",obj.A_CoverImageUrl)
             });
             return n;
         }

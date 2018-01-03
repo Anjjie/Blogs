@@ -66,6 +66,78 @@ namespace BLL
         }
         #endregion
 
+        #region 分页查询文章信息：条件
+        /// <summary>
+        /// 分页查询文章信息：条件
+        /// </summary>
+        /// <param name="pageNo">当前页编号</param>
+        /// <param name="pageSize">每页显示数</param>
+        /// <returns></returns>
+        public static List<Article> GetArticlePagingByConn(int pageNo, int pageSize, string conn)
+        {
+            List<Article> list = new List<Article>();
+            foreach (Article obj in Article_Service.GetArticlePagingByConn(pageNo, pageSize, conn))
+            {
+                obj.GetArticleType = ArticleType_Manager.GetArticleTypeByConn("At_Name", obj.A_TypeName);
+                list.Add(obj);
+            }
+            return list;
+        }
+        #endregion
+
+        #region 根据条件查询文章信息:多条
+        /// <summary>
+        /// 根据条件查询文章信息:多条
+        /// </summary>
+        /// <returns></returns>
+        public static List<Article> GetArticleByConns(string demandType, string demandContent)
+        {
+            List<Article> list = new List<Article>();
+            foreach (Article obj in Article_Service.GetArticleByConns(demandType, demandContent))
+            {
+                obj.GetArticleType = ArticleType_Manager.GetArticleTypeByConn("At_Name", obj.A_TypeName);
+                list.Add(obj);
+            }
+            return list;
+        }
+        #endregion
+
+        #region 查询全部有关的数据：条件
+        /// <summary>
+        /// 查询全部有关的数据：条件
+        /// </summary>
+        /// <param name="pageNo">当前页编号</param>
+        /// <param name="pageSize">每页显示数</param>
+        /// <returns></returns>
+        public static List<Article> Select_ArticleDescPagingByConn(int pageNo, int pageSize, string conn)
+        {
+            List<Article> list = new List<Article>();
+            foreach (Article obj in Article_Service.Select_ArticleDescPagingByConn(pageNo, pageSize, conn))
+            {
+                obj.GetArticleType = ArticleType_Manager.GetArticleTypeByConn("At_Name", obj.A_TypeName);
+                list.Add(obj);
+            }
+            return list;
+        }
+        #endregion
+
+        #region 显示全部：全部相关查询列条件
+        /// <summary>
+        /// 显示全部：全部相关查询列条件
+        /// </summary>
+        /// <returns></returns>
+        public static List<Article> Select_ArticleDescCorrelationByConn(string conn)
+        {
+            List<Article> list = new List<Article>();
+            foreach (Article obj in Article_Service.Select_ArticleDescCorrelationByConn( conn))
+            {
+                obj.GetArticleType = ArticleType_Manager.GetArticleTypeByConn("At_Name", obj.A_TypeName);
+                list.Add(obj);
+            }
+            return list;
+        }
+        #endregion
+
         #region 根据条件查询文章信息
         /// <summary>
         /// 根据条件查询文章信息

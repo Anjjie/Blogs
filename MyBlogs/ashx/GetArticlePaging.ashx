@@ -29,9 +29,9 @@ public class GetArticlePaging : IHttpHandler {
             foreach (Article obj in list)
             {
                 ulAndli += "<div class=\"left_DataInfo\">"
-                + "<div class=\"divImage\">没有</div>"
+                + "<div class=\"divImage\" style=\"background-image:url(../../images/SaveImage/"+ obj.A_CoverImageUrl +" );\"></div>"
                 + "<div class=\"divDataContent\">"
-                    + "<div class=\"title\">"+obj.A_Title+"</div>"
+                    + "<div class=\"title\" data-no=\""+obj.A_No+"\">"+obj.A_Title+"</div>"
                     + "<div class=\"typeDate\">"+obj.A_TypeName+"&nbsp;&nbsp;"+obj.A_DateTime+"</div>"
                    + "<div class=\"content\">"+obj.A_Content+"</div>"
                     + "</div>"
@@ -53,7 +53,7 @@ public class GetArticlePaging : IHttpHandler {
                 + "&nbsp;<a name=\"aBtnDelete\" href=\"javascript:;\" >删除</a></li></ul>";
             }
         }
-        int pageCount = Convert.ToInt32(Math.Ceiling((double)(count / 14))) + 1;
+        int pageCount = Convert.ToInt32(Math.Ceiling((double)(count / 14)))+ 1 ;
 
         string returnData = count + "&&" + pageCount + "&&" + ulAndli;
 

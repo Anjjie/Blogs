@@ -34,5 +34,59 @@ go
   where Rid>=(@PageNo-1)*@PageSize+1 and Rid<=@PageNo*@PageSize
  
  GO
+ 
+ exec Select_ArticlePaging 1
+ 
+ --查询【文章】分页显示:条件
+go
+IF EXISTS(SELECT * FROM sys.procedures WHERE name='Select_ArticlePagingByConn')
+  drop proc Select_ArticlePagingByConn
+go
+  create proc Select_ArticlePagingByConn
+  @Conn varchar(200),
+  @PageNo int =1,
+  @PageSize int=15 
+  as
+  select * from (select ROW_NUMBER() over(order by A_No desc)Rid,* from Article where A_TypeName=@Conn ) ArticlePaging
+  where Rid>=(@PageNo-1)*@PageSize+1 and Rid<=@PageNo*@PageSize
+ 
+ GO
+ 
+  exec Select_ArticlePagingByConn '新闻',1
   
-  
+   --查询【文章】分页显示:全部相关查询列条件
+go
+IF EXISTS(SELECT * FROM sys.procedures WHERE name='Select_ArticleDescPagingByConn')
+  drop proc Select_ArticleDescPagingByConn
+go
+  create proc Select_ArticleDescPagingByConn
+  @Conn varchar(200),
+    @PageNo int =1,
+  @PageSize int=15 
+  as
+  select * from (select ROW_NUMBER() over(order by A_No desc)Rid,* from Article where A_Title like @Conn 
+   or A_Author like @Conn  
+   or A_Content like @Conn  
+   or A_TypeName like @Conn  
+   or A_DateTime like @Conn  ) ArticlePaging
+  where Rid>=(@PageNo-1)*@PageSize+1 and Rid<=@PageNo*@PageSize
+
+ GO
+   exec Select_ArticleDescPagingByConn '%文%',1
+ 
+ --查询【文章】显示:全部相关查询列条件
+go
+IF EXISTS(SELECT * FROM sys.procedures WHERE name='Select_ArticleDescCorrelationByConn')
+  drop proc Select_ArticleDescCorrelationByConn
+go
+  create proc Select_ArticleDescCorrelationByConn
+  @Conn varchar(200)
+  as
+  select * from Article where A_Title like @Conn 
+   or A_Author like @Conn  
+   or A_Content like @Conn  
+   or A_TypeName like @Conn  
+   or A_DateTime like @Conn 
+
+ GO
+ Select_ArticleDescCorrelationByConn '%文%'

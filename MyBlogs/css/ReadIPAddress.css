@@ -1,0 +1,13 @@
+﻿*{padding:0;margin:0;}
+body{width:100%;}
+.topLogo{width:100%;height:40px;background-color:#ff6a00;font-size:16pt;font-family:"华文行楷";color:#ffffff;user-select:none;-webkit-user-select:none;-moz-user-select:none;}
+.logo{padding-left:10%;height:100%;display:flex;align-items:center;transition:margin-left 5s;cursor:pointer;}
+.logo:hover{margin-left:30%;}
+.content{height:400px; display:flex;align-items:center;justify-content:center;}
+.content_Info{width:30%;height:80%;}
+.tableContent{width:100%;height:100%;}
+.content_td{width:25%;text-align:center;background-color:rgba(168, 168, 168, 0.91);color:#ffffff;}
+.IPNo{background-color:#008ef9;text-align:center;font-size:16pt;color:#ffffff;}
+.content_td2{text-align:center;background-color:rgba(168, 168, 168, 0.91);color:#ffffff;}
+
+

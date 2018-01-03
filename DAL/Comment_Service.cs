@@ -49,14 +49,15 @@ namespace DAL
         /// 根据条件查询评价信息
         /// </summary>
         /// <returns></returns>
-        public static Comment GetCommentByConn(string demandType, string demandContent)
+        public static List<Comment> GetCommentByConn(string demandType, string demandContent)
         {
-            string sql = "Select * from Comment where" + demandType + " = @" + demandType;
+            List<Comment> list = new List<Comment>();
+            string sql = "Select * from Comment where " + demandType + " = @" + demandType;
             Comment comment = new Comment();
             SqlDataReader dr = DBHelper.ExecuteReader(sql, CommandType.Text, new SqlParameter[] {
                 new SqlParameter("@" + demandType,demandContent)
             });
-            if (dr.Read())
+            while (dr.Read())
             {
                 comment = new Comment()
                 {
@@ -68,10 +69,11 @@ namespace DAL
                     Com_No = Convert.ToInt32(dr["Com_No"]),
                     NickName = dr["NickName"].ToString()
                 };
+                list.Add(comment);
             }
             dr.Close();
             DBHelper.CloseCon();
-            return comment;
+            return list;
         }
         #endregion
         #region 添加评价数据

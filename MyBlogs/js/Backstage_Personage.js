@@ -35,11 +35,10 @@ function LoadInfo() {
                         $.getJSON("../ashx/GetArticleAllByDesc.ashx", function (data) {
                             $.each(data, function (i, obj) {
                                 if ((i + 1) <= 10) {
-                                    articleli += "<li class='liArticleContent'>" + obj.A_Title + "</li>";
+                                    articleli += "<li class='liArticleContent' data-no='"+obj.A_No+"'>" + obj.A_Title + "</li>";
                                 }
                                 $ulRecentlyArticle.html(articleli);
                             });
-
 
                             $.getJSON("../ashx/SelectLoginLogDesc.ashx",name, function (data) {
                                 var addulorli = " <ul class='ulLoginLog'>"
@@ -58,10 +57,12 @@ function LoadInfo() {
                                            + "<li class='liLoginLog'>" + obj.Log_Province + "</li>"
                                            + "<li class='liLoginLog'>" + obj.Log_City + "</li>"
                                            + "<li class='liLoginLog' style='flex:2;'>" + obj.Log_Date.split(" ")[0] + "</li>"
-                                           + "<li class='liLoginLog'><a href='#'>查看详细</a></li>"
+                                           + "<li class='liLoginLog'><a href='#' name='inDetail' data-no='" + obj.Log_No + "'>查看详细</a></li>"
                                         + "</ul>";
                                 });
                                 $divLoginLogContent.html(addulorli);
+                                liArticleContent_click();
+                                inDetail_click();
                             });
                         });
                     });
@@ -92,6 +93,18 @@ function LoadInfo() {
 function saveName() {
     var $left_li = $(".left_li");
     $left_li.data("LoginName", $(location).attr("href").split("=")[1]);
+}
+
+function inDetail_click() {
+    $("a[name='inDetail']").click(function () {
+        window.open("../ReadIPAddress.html?n=" + $(this).data("no"), "top");
+    });
+}
+
+function liArticleContent_click() {
+    $(".liArticleContent").click(function () {
+        window.open("../ReadArticle.html?n=" + $(this).data("no"), "top");
+    });
 }
 
 //导航选择显示页面

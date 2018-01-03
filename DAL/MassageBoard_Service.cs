@@ -29,7 +29,8 @@ namespace DAL
             {
                 MassageBoard massage = new MassageBoard() {
                     Aduit_No = Convert.ToInt32(dr["Aduit_No"]),
-                    Mb_Cause=dr["Mb_Cause"].ToString(),
+                    Mb_NickName= dr["Mb_NickName"].ToString(),
+                    Mb_Cause =dr["Mb_Cause"].ToString(),
                     Mb_Content = dr["Mb_Content"].ToString(),
                     Mb_Datetime = dr["Mb_Datetime"].ToString(),
                     Mb_No =Convert.ToInt32( dr["Mb_No"])
@@ -46,27 +47,30 @@ namespace DAL
         /// 根据条件查询留言信息
         /// </summary>
         /// <returns></returns>
-        public static MassageBoard GetMassageBoardByConn(string demandType, string demandContent)
+        public static List<MassageBoard> GetMassageBoardByConn(string demandType, string demandContent)
         {
             string sql = "Select * from MassageBoard where " + demandType + " = @" + demandType;
-            MassageBoard massage = new MassageBoard();
+            List<MassageBoard> list = new List<MassageBoard>();
+           MassageBoard massage = new MassageBoard();
             SqlDataReader dr = DBHelper.ExecuteReader(sql, CommandType.Text, new SqlParameter[] {
                 new SqlParameter("@" + demandType,demandContent)
             });
-            if (dr.Read())
+            while (dr.Read())
             {
                 massage = new MassageBoard()
                 {
                     Aduit_No = Convert.ToInt32(dr["Aduit_No"]),
+                    Mb_NickName = dr["Mb_NickName"].ToString(),
                     Mb_Cause = dr["Mb_Cause"].ToString(),
                     Mb_Content = dr["Mb_Content"].ToString(),
                     Mb_Datetime = dr["Mb_Datetime"].ToString(),
                     Mb_No = Convert.ToInt32(dr["Mb_No"])
                 };
+                list.Add(massage);
             }
             dr.Close();
             DBHelper.CloseCon();
-            return massage;
+            return list;
         }
         #endregion
         #region 添加留言数据
@@ -78,6 +82,7 @@ namespace DAL
         {
             int n = DBHelper.ExecuteNonQuery("Insert_MassageBoard", CommandType.StoredProcedure,
                 new SqlParameter[] {
+                    new SqlParameter("@Mb_NickName",obj.Mb_NickName),
                     new SqlParameter("@Mb_Datetime",obj.Mb_Datetime),
                     new SqlParameter("@Mb_Content",obj.Mb_Content),
                     new SqlParameter("@Mb_Cause",obj.Mb_Cause),
@@ -95,6 +100,7 @@ namespace DAL
         {
             int n = DBHelper.ExecuteNonQuery("Update_MassageBoard", CommandType.StoredProcedure,
                 new SqlParameter[] {
+                    new SqlParameter("@Mb_NickName",obj.Mb_NickName),
                     new SqlParameter("@Mb_Datetime",obj.Mb_Datetime),
                     new SqlParameter("@Mb_Content",obj.Mb_Content),
                     new SqlParameter("@Mb_Cause",obj.Mb_Cause),
