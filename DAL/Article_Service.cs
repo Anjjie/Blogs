@@ -201,7 +201,7 @@ namespace DAL
         public static List<Article> GetArticleByConns(string demandType, string demandContent)
         {
             List<Article> list = new List<Article>();
-            string sql = "Select * from Article where " + demandType + " = @" + demandType;
+            string sql = "Select * from Article where " + demandType + " = @" + demandType + " order by A_No desc";
             Article article = new Article();
             SqlDataReader dr = DBHelper.ExecuteReader(sql, CommandType.Text, new SqlParameter[] {
                 new SqlParameter("@" + demandType,demandContent)

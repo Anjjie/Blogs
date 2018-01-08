@@ -17,6 +17,7 @@ public class GetUserInfo : IHttpHandler {
         list.Add(PersonageInfo_Manager.GetPersonageInfoByConn("P_LoginName",context.Request["name"]));
         DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(List<PersonageInfo>));
         dcjs.WriteObject(context.Response.OutputStream,list);
+
     }
 
     public bool IsReusable {

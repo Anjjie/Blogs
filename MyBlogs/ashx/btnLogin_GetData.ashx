@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Json;
 using Models;
 using BLL;
 
-public class btnLogin_GetData : IHttpHandler {
+public class btnLogin_GetData : IHttpHandler,System.Web.SessionState.IRequiresSessionState {
 
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
@@ -28,6 +28,7 @@ public class btnLogin_GetData : IHttpHandler {
             else
             {
                 context.Response.Write("Yes");
+                context.Session["loginUser"] = obj.P_LoginName;
             }
         }
     }

@@ -25,6 +25,5 @@
 .liTitle{height:20%;white-space:nowrap;font-size:13pt;display:flex;align-items:center;font-weight:600;}
 .liType{height:15%; white-space:nowrap;font-size:10pt;color:rgba(141, 141, 141, 0.98)}
 .liContent{height:62%;word-break:break-word;color:rgba(141, 141, 141, 0.98)}
-.divLoadMore{width:100%;height:30px;display:flex;justify-content:center;align-items:center;}
-#btnLoadMore{margin-left:220px; height:100%;width:50%;outline-style:none;}
+
 

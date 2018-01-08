@@ -10,14 +10,16 @@
 		<script type="text/javascript" src="js/Backstage_Personage.js" ></script>
         <script type="text/javascript" src="js/Backstage_PersonageSecurity.js"></script>
 
-		<script type="text/javascript">
+        <script src="js/IsNotLogin.js"></script>
+        <script type="text/javascript">
             $(function () {
+                isNotLogin();
                 LoadUserInfo();
                 saveName();
                 leftNavgation_Click();
                 PageContentUrl();
 			});
-		</script>
+        </script>
 	</head>
 	<body>
 		<div id="left_NavgetionBack">

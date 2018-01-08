@@ -6,13 +6,15 @@
 		<link rel="stylesheet" href="css/Backstage_Personage.css" />
 		<script type="text/javascript" src="JQ_File/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="js/Backstage_Personage.js" ></script>
-		<script type="text/javascript">
+        <script src="js/IsNotLogin.js"></script>
+        <script type="text/javascript">
             $(function () {
+                isNotLogin();
                 saveName();
                 LoadInfo();
 			    leftNavgation_Click();
 			});
-		</script>
+        </script>
 	</head>
 	<body>
 		<div id="left_NavgetionBack">

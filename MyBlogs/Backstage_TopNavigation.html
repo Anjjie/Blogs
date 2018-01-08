@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -6,11 +6,13 @@
 		<link rel="stylesheet" href="css/Backstage_TopNavigation.css" />
 		<script src="JQ_File/jquery-3.2.1.js" type="text/javascript"></script>
 		<script src="js/Backstage_TopNavigation.js" type="text/javascript"></script>
-		<script type="text/javascript">
-			$(function(){
+        <script src="js/IsNotLogin.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                isNotLogin();
 				topPull_Down();
 			});
-		</script>
+        </script>
 	</head>
 	<body>
 		<div class="TopNavgationBack">
