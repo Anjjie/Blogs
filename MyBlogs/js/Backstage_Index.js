@@ -1,4 +1,4 @@
-/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
+/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 
 //设置显示顶部下拉框
 function topPull_Down(){
@@ -50,7 +50,7 @@ function getAllUserInfo() {
     var name = $(location).attr("href").split("=");
     var val = { "name": name[1] };
    
-    $.getJSON("../ashx/GetUserInfo.ashx",val,
+    $.getJSON("ashx/GetUserInfo.ashx",val,
          function (data) {
              $.each(data, function (i,obj) {
                  var imageUrl = "url(" + obj.P_Head + ")";
@@ -68,7 +68,7 @@ function getAllUserInfo() {
 
 function QuitLogin() {
     $("#btnClosePage").click(function () {
-        window.location.href = "../Login.html";
+        window.location.href = "Login.html";
     });
 }
 

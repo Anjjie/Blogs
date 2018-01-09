@@ -1,4 +1,4 @@
-﻿/// <reference path="../../JQ_File/jquery-3.2.1.min.js" />
+﻿/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 function Content_Div(){
     var $divEvarydayContent_Data = $(".EvarydayContent_Data[name='divEvarydayContent_Data']");
     var $divYearMonth = $(".divYearMonth");
@@ -50,7 +50,7 @@ function LoadData() {
     $.ajax({
         type: "get",
         data: data,
-        url: "../../ashx/GetArticleAllByEveryDay.ashx",
+        url: "ashx/GetArticleAllByEveryDay.ashx",
         success: function (ret) {
             var retData = ret.split('&&');
             console.log("总数据："+retData[0]+" | 总页数："+retData[1]);
@@ -69,7 +69,7 @@ function LoadData() {
 
 function background_Content_click() {
     $(".background-Content").click(function () {
-        window.open("../ReadArticle.html?n=" + $(".liTitle").eq($(this).index(".background-Content")).data("no"), "top");
+        window.open("ReadArticle.html?n=" + $(".liTitle").eq($(this).index(".background-Content")).data("no"), "top");
     });
 }
 
@@ -86,7 +86,7 @@ function LoadMoreData() {
         $.ajax({
             type: "get",
             data: data,
-            url: "../../ashx/GetArticleAllByEveryDay.ashx",
+            url: "ashx/GetArticleAllByEveryDay.ashx",
             success: function (ret) {
                 var retData = ret.split('&&');
                 console.log("总数据：" + retData[0] + " | 总页数：" + retData[1]);

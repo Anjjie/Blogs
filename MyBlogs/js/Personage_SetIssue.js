@@ -1,4 +1,4 @@
-﻿/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
+﻿/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 
 //加载问题库数据
 function LoadIssueInfo() {
@@ -7,7 +7,7 @@ function LoadIssueInfo() {
     var $selIssue3 = $("#selIssue3");
 
     var option = "";
-    $.getJSON("../ashx/GetIssueInfo.ashx", function (data) {
+    $.getJSON("ashx/GetIssueInfo.ashx", function (data) {
         $.each(data, function (i,obj) {
             option += "<option value='" + obj.IssueI_Name + "'>" + obj.IssueI_Name + "</option>";
         });
@@ -53,7 +53,7 @@ function LoadLastNext() {
 
     var $lbHint = $("#lbHint");
    
-    $.getJSON("../ashx/GetPersonage_Issue.ashx", name, function (data) {
+    $.getJSON("ashx/GetPersonage_Issue.ashx", name, function (data) {
         LoadIssueInfo();
         if (data == null) {
             $Content_Page2.css("display", "block");
@@ -180,7 +180,7 @@ function btnSave_click() {
         $.ajax({
             type: "get",
             data: datas,
-            url: "../ashx/SetIssue.ashx",
+            url: "ashx/SetIssue.ashx",
             success: function (returnInfo) {
                 $lbHints.html(returnInfo);
                 if (returnInfo == "恭喜，更改密保成功！") {
@@ -225,7 +225,7 @@ function divGetVerifyCode_click() {
         var name = {"user":$(location).attr("href").split('=')[1]};
         $.ajax({
             type: "get",
-            url: "../ashx/GetVerifyCode.ashx",
+            url: "ashx/GetVerifyCode.ashx",
             data: name,
             success: function (verifyCode) {
                 $divGetVerifyCode.data("verifyCode", verifyCode);

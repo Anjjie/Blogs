@@ -1,7 +1,7 @@
 ﻿function LoadLeaveWordInfo() {
     $.ajax({
         type: "get",
-        url: "../../ashx/GetLeaveWordInfo.ashx",
+        url: "ashx/GetLeaveWordInfo.ashx",
         success: function (ret) {
             $("#divLeaveWordContent").html(ret);
         }
@@ -27,7 +27,7 @@ function btnSend_Cleck() {
         };
         $.ajax({
             type: "get",
-            url: "../../ashx/AddLeaveWord.ashx",
+            url: "ashx/AddLeaveWord.ashx",
             data:data,
             success: function (ret) {
                 alert(ret);

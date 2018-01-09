@@ -1,4 +1,4 @@
-/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
+/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 
 //加载相关登录用户的信息
 function LoadInfo() {
@@ -12,7 +12,7 @@ function LoadInfo() {
 
 
 
-    $.getJSON("../ashx/GetUserInfo.ashx", name,
+    $.getJSON("ashx/GetUserInfo.ashx", name,
         function (data) {
             var articleli = "";
 
@@ -24,15 +24,15 @@ function LoadInfo() {
                                 + "<br/>手机：" + obj.P_Phone
                     );
 
-                $.getJSON("../ashx/GetArticleAll.ashx", function (data) {
+                $.getJSON("ashx/GetArticleAll.ashx", function (data) {
                     $.each(data, function (i, obj) {
                         $divArticleCount.html(i + 1);
                     });
-                    $.getJSON("../ashx/GetMassageAll.ashx", function (data) {
+                    $.getJSON("ashx/GetMassageAll.ashx", function (data) {
                         $.each(data, function (i, obj) {
                             $divMassageCount.html(i + 1);
                         });
-                        $.getJSON("../ashx/GetArticleAllByDesc.ashx", function (data) {
+                        $.getJSON("ashx/GetArticleAllByDesc.ashx", function (data) {
                             $.each(data, function (i, obj) {
                                 if ((i + 1) <= 10) {
                                     articleli += "<li class='liArticleContent' data-no='"+obj.A_No+"'>" + obj.A_Title + "</li>";
@@ -40,7 +40,7 @@ function LoadInfo() {
                                 $ulRecentlyArticle.html(articleli);
                             });
 
-                            $.getJSON("../ashx/SelectLoginLogDesc.ashx",name, function (data) {
+                            $.getJSON("ashx/SelectLoginLogDesc.ashx",name, function (data) {
                                 var addulorli = " <ul class='ulLoginLog'>"
                                            + "<li class='liLoginLogTitle' style='flex:2;'>IP</li>"
                                            + "<li class='liLoginLogTitle'>国家</li>"
@@ -97,13 +97,13 @@ function saveName() {
 
 function inDetail_click() {
     $("a[name='inDetail']").click(function () {
-        window.open("../ReadIPAddress.html?n=" + $(this).data("no"), "top");
+        window.open("ReadIPAddress.html?n=" + $(this).data("no"), "top");
     });
 }
 
 function liArticleContent_click() {
     $(".liArticleContent").click(function () {
-        window.open("../ReadArticle.html?n=" + $(this).data("no"), "top");
+        window.open("ReadArticle.html?n=" + $(this).data("no"), "top");
     });
 }
 

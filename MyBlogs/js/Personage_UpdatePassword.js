@@ -40,7 +40,7 @@ function btnGetVerify_click() {
         $.ajax({
             type: "get",
             data: datas,
-            url: "../ashx/GetVerifyCode.ashx",
+            url: "ashx/GetVerifyCode.ashx",
             success: function (returnInfo) {
                 code = returnInfo;
                 alert("测试验证码：" + returnInfo);
@@ -97,7 +97,7 @@ function UpdatePassword() {
         $.ajax({
             type: "get",
             data: datas,
-            url: "../ashx/UpdatePassword.ashx",
+            url: "ashx/UpdatePassword.ashx",
             success: function (info) {
                 thisHint.html(info);
             }

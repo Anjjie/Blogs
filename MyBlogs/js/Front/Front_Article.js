@@ -1,9 +1,9 @@
-﻿/// <reference path="../../JQ_File/jquery-3.2.1.min.js" />
+﻿/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 function LoadTypeInfo() {
     var data = { "comType": "1" };
     var $divArticleType = $("#divArticleType");
     $.ajax({
-        url: "../../ashx/GetArticleTypeAll.ashx",
+        url: "ashx/GetArticleTypeAll.ashx",
         data:data,
         type: "get",
         success: function (retData) {
@@ -25,6 +25,6 @@ function LoadTypeInfo() {
 function divArticleType_Button_Click() {
     $(".divArticleType_Button").click(function () {
         var urlName = ["Front_ArticleAll", "Front_ArticleTechnology", "Front_Articlejournalism", "Front_ArticleFiiNote"];
-        $("#iframe_Type").attr("src", "../../" + urlName[$(this).index()] + ".html");
+        $("#iframe_Type").attr("src", "" + urlName[$(this).index()] + ".html");
     });
 }

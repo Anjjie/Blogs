@@ -1,4 +1,4 @@
-﻿/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
+﻿/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 
 var click = 0;
 
@@ -265,7 +265,7 @@ function LoadData(index,pageNo) {
     var data = { "pageNo": pageNo };
     $.ajax({
         type:"get",
-        url: "../ashx/GetArticlePaging.ashx",
+        url: "ashx/GetArticlePaging.ashx",
         data: data,
         success: function (ret) {
             var retData = ret.split('&&');
@@ -363,7 +363,7 @@ function DeleteArticle(A_NO) {
 
     $.ajax({
         type: "get",
-        url: "../ashx/DeleteArticle.ashx",
+        url: "ashx/DeleteArticle.ashx",
         data: data,
         success: function (ret) {
             divHint_hide("删除提示", "#ffffff", ret, "red");LoadData(1,1);
@@ -388,7 +388,7 @@ function DeleteSelectAll() {
     divHint_Hide("show");
     $.ajax({
         type: "get",
-        url: "../ashx/DeleteArticle.ashx",
+        url: "ashx/DeleteArticle.ashx",
         data: data,
         success: function (ret) {
             divHint_hide("系统提示", "#ffffff", ret, "red");

@@ -1,10 +1,10 @@
-﻿/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
+﻿/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 function LoadInfo() {
     var data = { "no": Number(encodeURI($(location).attr("href").split('=')[1])) };
     $.ajax({
         type: "get",
         data: data,
-        url: "../ashx/GetLoginLogByConn.ashx",
+        url: "ashx/GetLoginLogByConn.ashx",
         success: function (ret) {
             var retData = $.parseJSON(ret);
             $.each(retData, function (i, obj) {

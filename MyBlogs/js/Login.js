@@ -1,4 +1,4 @@
-/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
+/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 //document.title=window.prompt("后台安全访问密码","");
 
 
@@ -36,7 +36,7 @@ function GetVerifyCode() {
             }
             var getData = { "user": $txtLoginName.val() };
             $.ajax({
-                url: "../ashx/GetVerifyCode.ashx",
+                url: "ashx/GetVerifyCode.ashx",
                 type: "get",
                 data: getData,
                 success: function (date) {
@@ -81,7 +81,7 @@ function btnLogin_Click() {
                 var getData = { "name": $txtLoginName.val(), "pwd": $txtLoginPwd.val() };
                 
                 $.ajax({
-                    url: "../ashx/btnLogin_GetData.ashx",
+                    url: "ashx/btnLogin_GetData.ashx",
                     type:"get",
                     data: getData,
                     success: function (date) {
@@ -125,12 +125,12 @@ function setLog(nameVal) {
         log.ip = returnCitySN["cip"];
         $.ajax({
             type: "get",
-            url: "../ashx/AddLoginLog.ashx",
+            url: "ashx/AddLoginLog.ashx",
             data: log,
             success: function (returnInfo) {
                 if (returnInfo == "Yes") {
                     $liHint.html("登录成功!");
-                    window.location.href = "../Backstage_Index.html?myLoginName=" + nameVal;
+                    window.location.href = "Backstage_Index.html?myLoginName=" + nameVal;
                 } else {
                     alert("失败！");
                 }

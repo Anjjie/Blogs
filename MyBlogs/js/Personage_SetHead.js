@@ -1,4 +1,4 @@
-﻿/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
+﻿/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 
 function GetUPImage() {
 
@@ -8,14 +8,14 @@ function GetUPImage() {
         var divImage = ["divHead200", "divHead150", "divHead125", "divHead100", "divHead75"];
         var count = divImage.length
         for (var i = 0; i < count; i++) {
-            $("#" + divImage[i]).css("background-image", "url(../images/SaveHead/" + NameAndPath[1] + ")");
+            $("#" + divImage[i]).css("background-image", "url(images/SaveHead/" + NameAndPath[1] + ")");
         };
         $("#btnFile").attr("title", NameAndPath[0]);
         $("#btnUp").val("未选择图片");
 
     } else {
         var data = { "name": $("#userName").val() };
-        $.getJSON("../ashx/GetUserInfo.ashx", data, function (data) {
+        $.getJSON("ashx/GetUserInfo.ashx", data, function (data) {
             $.each(data, function (i,obj) {
                 var divImage = ["divHead200", "divHead150", "divHead125", "divHead100", "divHead75"];
                 var count = divImage.length

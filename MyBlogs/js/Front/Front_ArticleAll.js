@@ -1,4 +1,4 @@
-﻿/// <reference path="../../JQ_File/jquery-3.2.1.min.js" />
+﻿/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 
 function isNotHide_SkipPageBtn(bool, UpNextType) {
     var $PageIndex = $("#PageIndex");
@@ -52,7 +52,7 @@ function LoadData_All() {
     $.ajax({
         type: "get",
         data:data,
-        url: "../../ashx/GetArticlePaging.ashx",
+        url: "ashx/GetArticlePaging.ashx",
         success: function (ret) {
             var retData = ret.split('&&');
             if (retData.length != 3)
@@ -79,7 +79,7 @@ function LoadData_All() {
 
 function left_DataInfo_click() {
     $(".left_DataInfo").click(function () {
-        window.open("../ReadArticle.html?n=" + $(".title").eq($(this).index(".left_DataInfo")).data("no"), "top");
+        window.open("ReadArticle.html?n=" + $(".title").eq($(this).index(".left_DataInfo")).data("no"), "top");
     });
 }
 
@@ -284,7 +284,7 @@ function GetPageInfoData(isFind, pageNo) {
         $.ajax({
             type: "get",
             data: data,
-            url: "../../ashx/GetArticlePaging.ashx",
+            url: "ashx/GetArticlePaging.ashx",
             success: function (ret) {
                 var retData = ret.split('&&');
                 if (retData.length != 3)
@@ -303,7 +303,7 @@ function GetPageInfoData(isFind, pageNo) {
         $.ajax({
             type: "get",
             data: data,
-            url: "../../ashx/Select_ArticleDescPagingByConn.ashx",
+            url: "ashx/Select_ArticleDescPagingByConn.ashx",
             success: function (ret) {
                 var retData = ret.split('&&');
                 if (retData.length != 3)
@@ -329,7 +329,7 @@ function btnFile_click() {
         $.ajax({
             type: "get",
             data: data,
-            url: "../../ashx/Select_ArticleDescPagingByConn.ashx",
+            url: "ashx/Select_ArticleDescPagingByConn.ashx",
             success: function (ret) {
                 var retData = ret.split('&&');
                 if (retData.length != 3)

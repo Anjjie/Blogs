@@ -1,4 +1,4 @@
-﻿/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
+﻿/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 
 var minNum = 0;
 var maxNum = 14;
@@ -8,7 +8,7 @@ function LoadInfo(min,max) {
     var $divContent = $("#divContent");
     $.ajax({
         type: "get",
-        url: "../ashx/GetCommentAll.ashx",
+        url: "ashx/GetCommentAll.ashx",
         success: function (ret) {
             var retData = $.parseJSON(ret);
             var count = 0;

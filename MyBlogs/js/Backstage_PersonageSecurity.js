@@ -1,4 +1,4 @@
-﻿/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
+﻿/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 
 //页面内容链接函数
 //设置关联内容链接
@@ -9,9 +9,9 @@ function PageContentUrl() {
     $a.click(function () {
         var index = $(this).index("a");
         var allUrl = ["UpdateInfo", "SetHead", "UpdatePassword", "SetIssue", "SetEmail","SetPhone"];
-        var getUrl = "../Personage_" + allUrl[index] + ".html?name=" + name;
+        var getUrl = "Personage_" + allUrl[index] + ".html?name=" + name;
         if (allUrl[index] == "SetHead") {
-            getUrl = "../Personage_" + allUrl[index] + ".aspx?name=" + name;
+            getUrl = "Personage_" + allUrl[index] + ".aspx?name=" + name;
         }
         $(this).attr({
             "target": "_blank",
@@ -26,7 +26,7 @@ function LoadUserInfo() {
     var $a = $("a[name='aURL']");
     var $lbHint = $("label[name='lbHint']");
     var count = $a.length;
-    $.getJSON("../ashx/GetUserInfo.ashx", name, function (data) {
+    $.getJSON("ashx/GetUserInfo.ashx", name, function (data) {
         $.each(data, function (i, obj) {
             for (var i = 0; i < count; i++) {
                 switch (i) {
@@ -87,7 +87,7 @@ function LoadUserInfo() {
                         $lbHint.eq(i).html(hint);
                         break;
                     case 3:
-                        $.getJSON("../ashx/GetPersonage_Issue.ashx", name, function (data) {
+                        $.getJSON("ashx/GetPersonage_Issue.ashx", name, function (data) {
                             if (data != null) {
                                 $lbHint.eq(3).css("color", "#00BB00");
                                 $lbHint.eq(3).html("已设置");

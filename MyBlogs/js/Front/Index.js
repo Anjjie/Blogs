@@ -1,6 +1,6 @@
-﻿/// <reference path="../../Personage_UpdatePassword.html" />
-/// <reference path="../../ReadArticle.html" />
-/// <reference path="../../JQ_File/jquery-3.2.1.min.js" />
+﻿/// <reference path="Personage_UpdatePassword.html" />
+/// <reference path="ReadArticle.html" />
+/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 function DataTime() {
     var canvas = document.getElementById("timeCanvas");
     var ctx = canvas.getContext("2d");
@@ -62,7 +62,7 @@ function LoadData() {
     var divDataInfo = "";
     $.ajax({
         type: "get",
-        url: "../../ashx/GetArticleAllByDesc.ashx",
+        url: "ashx/GetArticleAllByDesc.ashx",
         success: function (retData) {
             var data = $.parseJSON(retData);
             $.each(data, function (i, obj) {
@@ -71,7 +71,7 @@ function LoadData() {
                  + "<div class='content_Title' data-no='" + obj.A_No + "'>" + obj.A_Title + "</div>"
                     + "<div class='content_DataContent'>"
                         + "<ul>"
-                            + "<li class='content_Image' style=' background-image:url(../../images/SaveImage/" + obj.A_CoverImageUrl + ");'></li>"
+                            + "<li class='content_Image' style=' background-image:url(images/SaveImage/" + obj.A_CoverImageUrl + ");'></li>"
                             + "<li class='content_DataInfo'>"
                                 + "<ul>"
                                     + "<li class='DataInfo_content' >" + obj.A_Content+ "</li>"
@@ -100,6 +100,6 @@ function LoadData() {
 
 function ReadAll_click() {
     $(".ReadAll").click(function () {
-        window.open("../ReadArticle.html?n=" + $(".content_Title").eq($(this).index(".ReadAll")).data("no"),"top");
+        window.open("ReadArticle.html?n=" + $(".content_Title").eq($(this).index(".ReadAll")).data("no"),"top");
     });
 }

@@ -132,7 +132,7 @@ function GetPageInfoData(isFind, pageNo) {
         $.ajax({
             type: "get",
             data: data,
-            url: "../../ashx/GetArticlePagingByConn.ashx",
+            url: "ashx/GetArticlePagingByConn.ashx",
             success: function (ret) {
                 var retData = ret.split('&&');
                 if (retData.length != 3)
@@ -154,7 +154,7 @@ function GetPageInfoData(isFind, pageNo) {
         $.ajax({
             type: "get",
             data: data,
-            url: "../../ashx/Select_ArticleDescPagingByConn.ashx",
+            url: "ashx/Select_ArticleDescPagingByConn.ashx",
             success: function (ret) {
                 var retData = ret.split('&&');
                 if (retData.length != 3)
@@ -284,7 +284,7 @@ function LoadData() {
     $.ajax({
         type: "get",
         data: data,
-        url: "../../ashx/GetArticlePagingByConn.ashx",
+        url: "ashx/GetArticlePagingByConn.ashx",
         success: function (ret) {
             var retData = ret.split('&&');
             if (retData.length != 3)
@@ -322,7 +322,7 @@ function btnFile_click() {
         $.ajax({
             type: "get",
             data: data,
-            url: "../../ashx/Select_ArticleDescPagingByConn.ashx",
+            url: "ashx/Select_ArticleDescPagingByConn.ashx",
             success: function (ret) {
                 var retData = ret.split('&&');
                 if (retData.length != 3)
@@ -353,7 +353,7 @@ function btnFile_click() {
 
 function left_DataInfo_click() {
     $(".left_DataInfo").click(function () {
-        window.open("../ReadArticle.html?n=" + $(".title").eq($(this).index(".left_DataInfo")).data("no"), "top");
+        window.open("ReadArticle.html?n=" + $(".title").eq($(this).index(".left_DataInfo")).data("no"), "top");
     });
 }
 

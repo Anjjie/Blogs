@@ -1,4 +1,4 @@
-﻿/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
+﻿/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 
 //设置页面中间布局高度
 function SetCenterHeight() {
@@ -50,7 +50,7 @@ function btnSave_Click() {
         $.ajax({
             type: "get",
             data: datas,
-            url: "../ashx/UpdateMyInfo.ashx",
+            url: "ashx/UpdateMyInfo.ashx",
             success: function (info) {
                 alert(info);
             }

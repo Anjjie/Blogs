@@ -39,7 +39,7 @@ function btnGetVerify_click() {
         $.ajax({
             type: "get",
             data: datas,
-            url: "../ashx/GetVerifyCode.ashx",
+            url: "ashx/GetVerifyCode.ashx",
             success: function (returnInfo) {
                 code = returnInfo;
                 alert("测试验证码：" + returnInfo);
@@ -87,7 +87,7 @@ function btnSave_click() {
         $.ajax({
             type: "get",
             data: datas,
-            url: "../ashx/UpdatePhone.ashx",
+            url: "ashx/UpdatePhone.ashx",
             success: function (returnData) {
                 lbHint.html(returnData);
             }

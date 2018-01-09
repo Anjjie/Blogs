@@ -1,4 +1,4 @@
-﻿/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
+﻿/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 
 
 
@@ -6,7 +6,7 @@ function LoadReadInfo() {
     var data = { "title": decodeURI($(location).attr("href").split('=')[1]) }
     $.ajax({
         type: "get",
-        url: "../ashx/GetArticleByConn.ashx",
+        url: "ashx/GetArticleByConn.ashx",
         data:data,
         success: function (ret) {
             var retData = $.parseJSON(ret);
@@ -21,7 +21,7 @@ function LoadReadInfo() {
             
             $.ajax({
                 type: "get",
-                url: "../ashx/GetCommentByConn.ashx",
+                url: "ashx/GetCommentByConn.ashx",
                 data: datas,
                 success: function (ret) {
                     $("#divAllComment").html(ret);
@@ -49,7 +49,7 @@ function btnOk_click() {
          $.ajax({
                 type: "get",
                 data: data,
-                url:"../ashx/AddArticleComment.ashx",
+                url:"ashx/AddArticleComment.ashx",
                 success:  function (ret) {
                     if (ret=="0") {
                         alert("评价成功！\n审核成功！");

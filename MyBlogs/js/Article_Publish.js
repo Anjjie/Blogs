@@ -1,4 +1,4 @@
-﻿/// <reference path="../JQ_File/jquery-3.2.1.min.js" />
+﻿/// <reference path="JQ_File/jquery-3.2.1.min.js" />
 
 function CloseHint(a) {
     window.onbeforeunload = function () {
@@ -191,7 +191,7 @@ function btnUp_Click() {
 
                     //创建XMLHttpRequest对象
                     var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("POST", "../ashx/upFile.ashx?name=" + name + "&&cover=1");
+                    xmlHttp.open("POST", "ashx/upFile.ashx?name=" + name + "&&cover=1");
                     
                     //进度条
                     xmlHttp.upload.addEventListener("progress", upFileProgress, false);
@@ -203,7 +203,7 @@ function btnUp_Click() {
                             $(".One_table_AddImage").removeClass("backgroundColor");
                             eval("var ret=" + xmlHttp.responseText);
                            
-                            var url = "../images/SaveImage/"+ ret.fileName;
+                            var url = "images/SaveImage/"+ ret.fileName;
                             InsertImage(url);
                             $btnUp.attr("title", "未选择图片");
                             $selFile.val("");
@@ -432,7 +432,7 @@ function Load_setType() {
 
     $.ajax({
         type: "get",
-        url: "../ashx/GetArticleTypeAll.ashx",
+        url: "ashx/GetArticleTypeAll.ashx",
         success: function (ret) {
             $("#setType").html(ret);
         }
@@ -473,7 +473,7 @@ function btnCoverImage_up() {
 
                     //创建XMLHttpRequest对象
                     var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("POST", "../ashx/upFile.ashx?name=" + name + "&&cover=cover");
+                    xmlHttp.open("POST", "ashx/upFile.ashx?name=" + name + "&&cover=cover");
                    
                     //是否上传成功
                     xmlHttp.onload = function () {
@@ -557,7 +557,7 @@ function btnSend_click() {
         };
         $.ajax({
             type: "get",
-            url: "../ashx/AddArticle.ashx",
+            url: "ashx/AddArticle.ashx",
             data: data,
             success: function (ret) {
                 if (ret=="1") {
